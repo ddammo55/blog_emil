@@ -34,7 +34,7 @@
       <a class="ui logo icon image" href="/">
         <img src="/images/logo.png" width="30px" hight="30px">
       </a>
-      <a href="/"><b>PCB 공정 관리</b></a>
+      <a href="/"><b>PCB 공정 관리2</b></a>
     </div>
 
     {{-- 게스트면 --}}
