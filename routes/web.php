@@ -17,7 +17,9 @@ Route::get('/user/login', 'SessionController@create');
 Auth::routes(['verify' => true]);
 
 Route::get('profile', function () {
-    // Only verified users may enter...
+   return Auth()->user()->name;
 })->middleware('verified');
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/', 'HomeController@index')->name('home');
+
+
