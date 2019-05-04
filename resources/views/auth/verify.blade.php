@@ -1,47 +1,36 @@
 @extends('master')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    <form method="POST" action="{{ route('password.email') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Send Password Reset Link') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="ui equal width grid">
+  <div class="column">
+    <!-- -->
 </div>
+<div class="eight wide column">
+
+    <div class="ui icon message">
+      <i class="envelope open outline icon"></i>
+      <div class="content">
+        <div class="header"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          {{ __('당신의 이메일 주소를 확인해 주세요.') }}
+
+          @if (session('resent'))
+          <div class="alert alert-success" role="alert">
+            {{ __('새 인증 링크가 당신의 이메일 주소로 발송되었습니다.') }}
+        </div>
+        @endif
+    </font></font></div>
+    <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        {{ __('계속하기 전에 이메일에 확인 링크가 있는지 확인하십시오.') }}
+        {{ __('이메일을받지 못했다면') }}, <a href="{{ route('verification.resend') }}">{{ __('다른 것을 요청하려면 여기를 클릭하십시오.') }}</a>.
+    </font></font></p>
+</div>
+</div>
+
+</div>
+<div class="column">
+   <!-- -->
+</div>
+</div>
+
 @endsection
