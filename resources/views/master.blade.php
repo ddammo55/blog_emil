@@ -15,18 +15,18 @@
   <script src="/semantic/semantic.js"></script>
 </head>
 <style media="screen">
-body{
-  padding: 1rem;
-}
-.pusher{
- margin-left: 15rem;
-}
-.text{
- margin-left: 1rem;
- margin-top: 2px;;
- color:white;
- font-size: 15px;
-}
+  body{
+    padding: 1rem;
+  }
+  .pusher{
+   margin-left: 15rem;
+ }
+ .text{
+   margin-left: 1rem;
+   margin-top: 2px;;
+   color:white;
+   font-size: 15px;
+ }
 </style>
 <body>
   <div class="ui sidebar visible inverted vertical menu">
@@ -48,7 +48,9 @@ body{
     
     {{-- 회원이면 이름 출력 --}}
     <div class="item">
-     {{auth()->user()->name}} 
+      <a  href="{{ url('/profile') }}">
+       {{auth()->user()->name}} 
+     </a>
    </div>
 
    {{-- 회원이면 로그아웃처리 --}}
@@ -65,64 +67,64 @@ body{
 
 
 
- 
 
 
-  <a class="item" href="/introduction/getting-started.html">
-    <b>통계 보기</b>
-  </a>
-  <a class="item" href="/introduction/new.html">
-    <b>추적 성 관리</b>
-  </a>
-  <div class="item">
-    <div class="header">제조 영상</div>
-    <div class="menu">
 
-      <a class="item" href="/introduction/integrations.html">
-        PBA
-      </a>
+<a class="item" href="/introduction/getting-started.html">
+  <b>통계 보기</b>
+</a>
+<a class="item" href="/introduction/new.html">
+  <b>추적 성 관리</b>
+</a>
+<div class="item">
+  <div class="header">제조 영상</div>
+  <div class="menu">
 
-      <a class="item" href="/introduction/build-tools.html">
-        ASS'Y
-      </a>
+    <a class="item" href="/introduction/integrations.html">
+      PBA
+    </a>
 
-    </div>
+    <a class="item" href="/introduction/build-tools.html">
+      ASS'Y
+    </a>
+
   </div>
-  <div class="item">
-    <div class="header">참고 자료</div>
-    <div class="menu">
+</div>
+<div class="item">
+  <div class="header">참고 자료</div>
+  <div class="menu">
 
-      <a class="item" href="/usage/theming.html">
-        Theming
-      </a>
+    <a class="item" href="/usage/theming.html">
+      Theming
+    </a>
 
-      <a class="item" href="/usage/layout.html">
-        Layouts
-      </a>
+    <a class="item" href="/usage/layout.html">
+      Layouts
+    </a>
 
-    </div>
   </div>
-  <div class="item">
-    <div class=" header">참고 자료</div>
-    <div class="menu">
+</div>
+<div class="item">
+  <div class=" header">참고 자료</div>
+  <div class="menu">
 
-      <a class="item" href="/globals/reset.html">
-        Reset
+    <a class="item" href="/globals/reset.html">
+      Reset
 
-      </a>
+    </a>
 
-      <a class="item" href="/globals/site.html">
-        Site
+    <a class="item" href="/globals/site.html">
+      Site
 
-      </a>
+    </a>
 
-    </div>
   </div>
+</div>
 </div>
 
 <div class="pusher">
-
- @yield('content')
+  @include('flash::message')
+  @yield('content')
 </div>
 
 
