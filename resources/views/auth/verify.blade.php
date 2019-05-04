@@ -16,7 +16,7 @@
 
           @if (session('resent'))
           <div class="alert alert-success" role="alert">
-            {{ __('A fresh verification link has been sent to your email address.') }}
+            {{ __('새 인증 링크가 당신의 이메일 주소로 발송되었습니다.') }}
         </div>
         @endif
     </font></font></div>
