@@ -4,9 +4,9 @@ Route::get('/', function () {
     return view('main');
 });
 
-Route::get('/1', function () {
-    return view('welcome');
-});
+// Route::get('/1', function () {
+//     return view('welcome');
+// });
 
 
 ///////////
@@ -15,6 +15,14 @@ Route::get('/user/login', 'SessionController@create');
 
 
 Auth::routes(['verify' => true]);
+
+Route::get('/unsubscribe/{user}', function (Request $request) {
+    if (! $request->hasValidSignature()) {
+        abort(401);
+    }
+
+    // ...
+})->name('unsubscribe');
 
 Route::get('profile', function () {
    return view('profile');
