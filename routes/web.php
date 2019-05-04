@@ -16,17 +16,10 @@ Route::get('/user/login', 'SessionController@create');
 
 Auth::routes(['verify' => true]);
 
-Route::get('/unsubscribe/{user}', function (Request $request) {
-    if (! $request->hasValidSignature()) {
-        abort(401);
-    }
 
-    // ...
-})->name('unsubscribe');
-
-Route::get('profile', function () {
-   return view('profile');
-})->middleware('verified');
+// Route::get('profile', function () {
+//    return view('profile');
+// })->middleware('verified');
 
 //Route::get('/', 'HomeController@index')->name('home');
 //Auth()->user()->name;
