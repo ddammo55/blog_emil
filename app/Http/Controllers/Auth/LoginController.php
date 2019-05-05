@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -25,7 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/profile';
 
     /**
      * Create a new controller instance.
@@ -36,5 +37,30 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function login(Request $request){
+        $this->validate($request,[
+          'email'=> 'required|email',
+          'password'=> 'required|min:8',
+      ]);
+
+    if (!auth()->attempt($request->only('email','password'), $request->has('remember'))){
+          flash('이메일 또는 비밀번호가 맞지 않습니다.');
+          return back()->withInput();
+      }
+
+      // 로그인하면 보여지는 메세지
+      flash(auth()->user()->name . '님 환영합니다.'.'<br>'.'회원님은 '.date("Y년 m월 d일 h시 i분").'에 계정 접속 하였습니다.'.'<br>'.'오늘도 즐거운 하루 보내세요^^');
+
+      return redirect()->intended('profile');
+    }
+
+    public function logout(){
+            auth()->logout();
+    flash('또 방문해 주세요');
+
+    return redirect('/');
+    }
+
 
 }

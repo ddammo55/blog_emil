@@ -123,6 +123,11 @@
 </div>
 
 <div class="pusher">
+  @if (session('status'))
+  <div class="alert alert-success" role="alert">
+    {{ session('status') }}
+  </div>
+  @endif
   @include('flash::message')
   @yield('content')
 </div>
