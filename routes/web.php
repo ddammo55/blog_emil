@@ -21,7 +21,7 @@ Route::get('profile', function () {
    return view('profile');
 })->middleware('verified');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/1', 'HomeController@index')->name('/');
 //Auth()->user()->name;
 
 

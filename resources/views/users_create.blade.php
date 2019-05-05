@@ -37,6 +37,14 @@
         {!! $errors->first('password_confirmation', '<span class="form-error">:message</span>') !!}
       </div>
 
+
+      @error('password')
+      <span class="invalid-feedback" role="alert">
+        <strong>{{ $message }}</strong>
+      </span>
+      @enderror
+
+      
       <div class="field">
         <button class="ui button" type="submit">
           가입하기
