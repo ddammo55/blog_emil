@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 class SessionController extends Controller
 {
 
-  // 유저로그인
+#|--------------------------------------------------------------------------
+#| 유저 로그인
+#|--------------------------------------------------------------------------
   public function create()
   {
     return view('users_login');
@@ -31,7 +33,9 @@ class SessionController extends Controller
     // return redirect()->intended('/');
   }
 
-
+#|--------------------------------------------------------------------------
+#| 유저 로그아웃
+#|--------------------------------------------------------------------------
   public function destroy()
   {
     auth()->logout();
@@ -39,13 +43,5 @@ class SessionController extends Controller
 
     return redirect('/');
   }
-
-
-  // public function index()
-  // {
-  //   return view('login');
-  // }
-
-
 
 }
