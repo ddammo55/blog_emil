@@ -76,6 +76,9 @@
 <a class="item" href="/introduction/new.html">
   <b>추적 성 관리</b>
 </a>
+<a class="item" href="/posts">
+  <b>게시판</b>
+</a>
 <div class="item">
   <div class="header">제조 영상</div>
   <div class="menu">

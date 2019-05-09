@@ -13,7 +13,7 @@ class PostsController extends Controller
 #|--------------------------------------------------------------------------
     public function index()
     {
-       $posts = \App\Post::all(); 
+       $posts = \App\Post::latest()->paginate(5); 
 
        return view('posts.index',compact('posts')); 
     }
@@ -26,8 +26,9 @@ class PostsController extends Controller
         return view('posts.create');
     }
 
-
-
+#|--------------------------------------------------------------------------
+#| 게시판 글 유효성검사, 데이터베이스에 등록하기
+#|--------------------------------------------------------------------------
     public function store()
     {
         Post::create(request()->validate([
@@ -38,23 +39,40 @@ class PostsController extends Controller
         return redirect('/posts');
     }
 
+#|--------------------------------------------------------------------------
+#| 게시판 글 상세 페이지
+#|--------------------------------------------------------------------------    
     public function show(Post $post)
     {
-        //
+        return view('posts.show',compact('post'));
     }
 
+#|--------------------------------------------------------------------------
+#| 게시판 글 수정 페이지
+#|--------------------------------------------------------------------------     
     public function edit(Post $post)
     {
-        //
+        return view('posts.edit',compact('post'));
     }
 
+#|--------------------------------------------------------------------------
+#| 게시판 글 데이터베이스에 등록하기
+#|--------------------------------------------------------------------------    
     public function update(Request $request, Post $post)
     {
-        //
+        $post->update(request(['title','description']));
+
+        return redirect('/posts');
     }
 
+
+#|--------------------------------------------------------------------------
+#| 게시판 글 삭제하기
+#|-------------------------------------------------------------------------- 
     public function destroy(Post $post)
     {
-        //
+       $post->delete();
+
+       return redirect('/posts');
     }
 }
