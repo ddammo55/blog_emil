@@ -1,9 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
+@extends('master')
+
+@section('content')
+
 	<h1>글 수정</h1>
 	<form method="POST" action="/posts/{{ $post->id }}">
 		@csrf
@@ -20,5 +18,5 @@
 			<button type="submit">글 수정</button>
 		</div>
 	</form>
-</body>
-</html>
+
+@endsection

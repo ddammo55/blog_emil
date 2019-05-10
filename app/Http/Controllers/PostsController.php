@@ -13,7 +13,7 @@ class PostsController extends Controller
 #|--------------------------------------------------------------------------
     public function index()
     {
-       $posts = \App\Post::latest()->paginate(5); 
+       $posts = \App\Post::latest()->paginate(15); 
 
        return view('posts.index',compact('posts')); 
     }

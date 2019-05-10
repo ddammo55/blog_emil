@@ -1,22 +1,20 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-	<h1>글 상세페이지</h1>
-	<div>
+@extends('master')
 
-		{{ $post->title }}
-	</div>
-	<div>
+@section('content')
 
-		{{ $post->description }}
-	</div>
+<h1>글 상세페이지</h1>
+<div>
 
-	<div>
-		<a href="/posts/{{ $post->id }}/edit">수정하기</a>
-	</div>
+	{{ $post->title }}
+</div>
+<div>
+
+	{{ $post->description }}
+</div>
+
+<div>
+	<a href="/posts/{{ $post->id }}/edit">수정하기</a>
+</div>
 
 <form method="POST" action="/posts/{{ $post->id }}">
 	@method('DELETE')
@@ -24,5 +22,4 @@
 	<button type="submit">글 삭제</button>	
 </form>
 
-</body>
-</html>
+@endsection

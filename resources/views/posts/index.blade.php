@@ -8,33 +8,35 @@
   <div class="item">
     <i class="play middle aligned icon">&nbsp;{{ $post->id }}</i>
     <div class="content"> <div class="right floated content">
-      <div class="ui button"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">더하다</font></font></div>
+      <div class="ui button"><font style="vertical-align: inherit;">더하다</font></div>
     </div>
-      <a class="header"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      <a class="header"><font style="vertical-align: inherit;">
       	<a href="/posts/{{$post->id}}">
-      	{{ $post->title }}
+      	<h3>{{ $post->title }}</h3>
       	</a>
-      </font></font>
-      <div class="description"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ $post->description }}</font></font>
+      </font>
+      <div class="description"><font style="vertical-align: inherit;">{{ $post->description }}</font>
       </div>
-
     </div>
   </div>
 
 @endforeach
 </div>
 
+{{-- 가로선 --}} 
+<div class="ui clearing divider"></div>
 
-	<form method="get" action="/posts/create">
+	<form method="get" action="/posts/create" style="margin-bottom: 10px;">
 		<button class="ui teal button" type="submit">
 			글 작성하기
 		</button>
 	</form>
 
+
+
+{{-- 페이지네이션 --}}
 @if($posts->count())
-<div class="ui borderless menu">
-	{!! $posts->render() !!}
-</div>
+	{{ $posts->links() }}
 @endif
 
 
