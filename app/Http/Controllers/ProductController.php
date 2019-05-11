@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\ProductRequest;
 class ProductController extends Controller
 {
     /**
@@ -35,8 +35,27 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
+
+         // $validated = $request->validated();
+        // $rules = [
+        //     'serial_start_no' => ['required', 'min:4'],
+        //     'serial_end_no' => ['required', 'min:4'],
+        // ];
+
+        //  $messages =  [
+        //     'serial_start_no.required' => '시작번호는 필수 입력 항목입니다.',
+        //     'serial_end_no.required' => '끝번호는 필수 입력 항목입니다.',
+        //     'min' => '시리얼번호는 6자 이상 필수 항목입니다.',
+
+        // ];
+
+        // $validator = \Validator::make($request->all(), $rules, $messages);
+
+        //  if($validator->fails()){
+        //     return back()->withErrors($validator)->withInput();
+        // }
          //시리얼 번호 받기   
          $serial_start_no=$_POST['serial_start_no'];
          $serial_end_no=$_POST['serial_end_no'];
@@ -65,9 +84,6 @@ class ProductController extends Controller
             
             Product::create([
             'serial_name' => $serial_name,
-            'created_at' => NOW(),
-            'updated_at' => NOW(),
-
             ]);
        }      
         return redirect('/product/create');

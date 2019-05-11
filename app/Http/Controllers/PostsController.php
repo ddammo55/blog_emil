@@ -34,13 +34,13 @@ class PostsController extends Controller
 
         $rules = [
             'title' => ['required'],
-            'description' => ['required', 'min:10'],
+            'description' => ['required', 'min:4'],
         ];
 
         $messages = [
             'title.required' => '제목은 필수 입력 항목입니다.',
             'description.required' => '본문은 필수 입력 항목입니다.',
-            'min' => '본문은 10자 이상 필수 항목입니다.',
+            'min' => '본문은 4자 이상 필수 항목입니다.',
            
         ];
 
@@ -52,7 +52,7 @@ class PostsController extends Controller
 
         Post::create(request()->validate([
             'title' => ['required','min:3'],
-            'description' => ['required','min:3']
+            'description' => ['required','min:3'],
         ]));
 
         return redirect('/posts');
