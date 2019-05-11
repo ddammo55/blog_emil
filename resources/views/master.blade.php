@@ -73,9 +73,20 @@
 <a class="item" href="/introduction/getting-started.html">
   <b>통계 보기</b>
 </a>
-<a class="item" href="/introduction/new.html">
+<a class="item" href="/product">
   <b>추적 성 관리</b>
 </a>
+
+<div class="menu">
+    <a class="item" href="/product/create">
+      시리얼번호 입력
+    </a>
+
+    <a class="item" href="/introduction/build-tools.html">
+      ---
+    </a>
+</div>
+
 <a class="item" href="/posts">
   <b>게시판</b>
 </a>

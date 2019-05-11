@@ -29,8 +29,27 @@ class PostsController extends Controller
 #|--------------------------------------------------------------------------
 #| 게시판 글 유효성검사, 데이터베이스에 등록하기
 #|--------------------------------------------------------------------------
-    public function store()
+    public function store(Request $request)
     {
+
+        $rules = [
+            'title' => ['required'],
+            'description' => ['required', 'min:10'],
+        ];
+
+        $messages = [
+            'title.required' => '제목은 필수 입력 항목입니다.',
+            'description.required' => '본문은 필수 입력 항목입니다.',
+            'min' => '본문은 10자 이상 필수 항목입니다.',
+           
+        ];
+
+         $validator = \Validator::make($request->all(), $rules, $messages);
+
+         if($validator->fails()){
+            return back()->withErrors($validator)->withInput();
+        }
+
         Post::create(request()->validate([
             'title' => ['required','min:3'],
             'description' => ['required','min:3']
