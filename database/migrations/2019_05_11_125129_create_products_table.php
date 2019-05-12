@@ -19,8 +19,9 @@ class CreateProductsTable extends Migration
             $table->string('board_name');                  #보드명
             $table->date('product_date');             #생산일
             $table->date('shipment')->nullable();                 #출하일
-            $table->integer('user_id');              #AOI_TOP_부품수량
-            $table->integer('aoi_top_part_df_num')->default(0);            #AOI_TOP_불량수량
+            $table->integer('user_id')->nullable();              #유저아이디
+            $table->integer('aoi_top_part_num')->default(0);               #AOI_top_부품수량
+            $table->integer('aoi_top_df_num')->default(0);                 #AOI_top_불량수량
             $table->integer('aoi_top_df_01')->default(0);                  #미삽
             $table->integer('aoi_top_df_02')->default(0);                  #미납
             $table->integer('aoi_top_df_03')->default(0);                  #쇼트

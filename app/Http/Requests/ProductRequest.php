@@ -24,8 +24,8 @@ class ProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'serial_start_no' => ['required','regex:/[0-9]{2}[a-lA-L]{1}[[0-9]{4}/'],
-            'serial_end_no' => ['required', 'min:4','regex:/[0-9]{2}[a-lA-L]{1}[[0-9]{4}/'],
+            'serial_start_no' => 'required|regex:/[0-9]{2}[a-lA-L]{1}[[0-9]{4}/',
+            'serial_end_no' => 'required|min:4|regex:/[0-9]{2}[a-lA-L]{1}[[0-9]{4}/',
         ];
 
     }
@@ -33,10 +33,10 @@ class ProductRequest extends FormRequest
     public function messages()
     {
         return [
-            'serial_start_no.required' => '시작번호는 필수 입력 항목입니다.',
-            'serial_end_no.required' => '끝번호는 필수 입력 항목입니다.',
+            'serial_start_no.required' => '시작 번호는 필수 입력 항목입니다.',
+            'serial_end_no.required' => '끝 번호는 필수 입력 항목입니다.',
             'min' => ':attribute 은 최소 :min 글자 이상이 필요함.',
-            'regex' => ':attribute 은 정규표현식 ex)19A0001',
+            'regex' => ':attribute 은 시리얼번호 형식에 맞지 않습니다. ex)19A0001',
         ];
     }
 }

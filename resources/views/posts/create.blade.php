@@ -19,7 +19,7 @@
 </form>
 
 @if($errors->any())
-<div class="ui red inverted segment">
+<div class="ui pink inverted segment">
 
 	<ul>	
 		@foreach ($errors->all() as $error)
@@ -28,4 +28,5 @@
 	</ul>
 </div>	
 @endif	
+
 @endsection
