@@ -8,11 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest;
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
      $products = \App\Product::latest()->paginate(15); 
@@ -28,20 +24,26 @@ class ProductController extends Controller
     public function create()
     {
         $products = \App\Product::latest('id')->paginate(15); 
+
+        //시리얼 번호 최근 컬럼을 가지고 온다.
         $products_first = \App\Product::latest('id')->first('serial_name');
-        //echo($products_first->serial_name);
-        $serial_start_no_int=substr($products_first->serial_name,3,4); //숫자만 남긴다.
-        //dd($serial_start_no_int);
-        $serial_start_no_int=$serial_start_no_int+0001;
-        dd($serial_start_no_int);
-
-
-        // $result1 = substr($chang,0,3);
-        // $result2 = substr($chang,3,4);
         
-        // $ttr = sprintf("%04d",$result2+1);
-        // $ttr_chang = $result1.$ttr;
-       // return view('product.create',compact('products','serial_start_no_int'));
+        //숫자만 남긴다. 0005
+        $serial_start_no_int=substr($products_first->serial_name,3,4);
+        
+        //앞에만 남긴다. 19A
+        $serial_start_no_start=substr($products_first->serial_name,0,3);
+
+        //숫자1을 더한다. 0006
+        $ttr = sprintf("%04d",$serial_start_no_int+1);
+
+        //다시 영문과 숫자를 합친다.
+        $final_serial_name = $serial_start_no_start.$ttr;
+
+        //마지막 시리얼번호 + 0001 한 결과변수
+        //$final_serial_name;
+
+        return view('product.create',compact('products','final_serial_name'));
     }
 
     /**

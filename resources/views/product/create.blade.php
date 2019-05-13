@@ -11,14 +11,17 @@
     	<form class="ui form" method="POST" action="/product">
     		@csrf
     		<div class="field">
-    			<input class="input {{ $errors->has('serial_start_no') ? 'is-danger' : '' }}" type="text" name="serial_start_no" value="{{ old('serial_start_no') }} {{ $serial_start_no_int}}" placeholder="시작번호">
+    			<input class="input {{ $errors->has('serial_start_no') ? 'is-danger' : '' }}" type="text" name="serial_start_no" value="{{ 
+            $final_serial_name }}" placeholder="시작번호">
     		</div>
 
     		<div class="field">
     			<input class="input {{ $errors->has('serial_end_no') ? 'is-danger' : '' }}" type="text" name="serial_end_no" value="{{ old('serial_end_no') }}" placeholder="끝번호">
     		</div>
 
-    		<input type="hidden" name="board_name" value="test_name">
+        <div class="field">
+          <input class="input {{ $errors->has('board_name') ? 'is-danger' : '' }}" type="text" name="board_name" value="{{ old('board_name') }}" placeholder="보드명">
+        </div>
 
     		<div class="field">
     			<button class="ui button" type="submit">시리얼번호 작성</button>
