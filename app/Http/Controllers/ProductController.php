@@ -28,7 +28,20 @@ class ProductController extends Controller
     public function create()
     {
         $products = \App\Product::latest('id')->paginate(15); 
-        return view('product.create',compact('products'));
+        $products_first = \App\Product::latest('id')->first('serial_name');
+        //echo($products_first->serial_name);
+        $serial_start_no_int=substr($products_first->serial_name,3,4); //숫자만 남긴다.
+        //dd($serial_start_no_int);
+        $serial_start_no_int=$serial_start_no_int+0001;
+        dd($serial_start_no_int);
+
+
+        // $result1 = substr($chang,0,3);
+        // $result2 = substr($chang,3,4);
+        
+        // $ttr = sprintf("%04d",$result2+1);
+        // $ttr_chang = $result1.$ttr;
+       // return view('product.create',compact('products','serial_start_no_int'));
     }
 
     /**

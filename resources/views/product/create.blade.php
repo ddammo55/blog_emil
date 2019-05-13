@@ -11,7 +11,7 @@
     	<form class="ui form" method="POST" action="/product">
     		@csrf
     		<div class="field">
-    			<input class="input {{ $errors->has('serial_start_no') ? 'is-danger' : '' }}" type="text" name="serial_start_no" value="{{ old('serial_start_no') }}" placeholder="시작번호">
+    			<input class="input {{ $errors->has('serial_start_no') ? 'is-danger' : '' }}" type="text" name="serial_start_no" value="{{ old('serial_start_no') }} {{ $serial_start_no_int}}" placeholder="시작번호">
     		</div>
 
     		<div class="field">
@@ -38,16 +38,38 @@
 
     	<div class="ui unstackable steps">
     		@for ($i = 1; $i < 13; $i++)
-    			
-    		<div class="step" style="padding: 15px;">
-    			<div class="content" >
-    				<div><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ $i }}월</font></font><br>
-    					@if ($i == 1)
+         <!-- 현재월이 과 같다면 색깔들어오게 -->
+    			 @if (date('m') == $i)
+    		<div class="active step" style="padding: 15px; background-color: tomato">
+    			 @else
+        <div class="step" style="padding: 15px;">
+            @endif
+          <div class="content" >
+    				<div><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ $i }}월 </font></font><br>
+                @if ($i == 1)
     						A
     						@elseif ($i == 2)
     						B
     						@elseif ($i == 3)
     						C
+                @elseif ($i == 4)
+                D
+                @elseif ($i == 5)
+                E
+                @elseif ($i == 6)
+                F
+                @elseif ($i == 7)
+                G
+                @elseif ($i == 8)
+                H
+                @elseif ($i == 9)
+                I
+                @elseif ($i == 10)
+                J
+                @elseif ($i == 11)
+                K
+                @elseif ($i == 12)
+                L
     					@endif
     				</div>
     			</div>
