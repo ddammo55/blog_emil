@@ -1,6 +1,6 @@
 <?php
 
-use App\list;
+use App\Pcb_list;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 
@@ -18,10 +18,10 @@ use Faker\Generator as Faker;
 $factory->define(Pcb_list::class, function (Faker $faker) {
     return [
         'board_name' => $faker->sentence(),
-        'top_num' => int::random(2),
-        'bot_num' => int::random(2),
+        'top_num' => RandomRange(10,99),
+        'bot_num' => RandomRange(10,99),
         'unit' => $faker->sentence(), 
         'note' => $faker->sentence(),
-        'description' => $faker->paragraph(),     
+        'description' => $faker->paragraph(),    
     ];
 });

@@ -28,6 +28,16 @@ class ProductController extends Controller
         //시리얼 번호 최근 컬럼을 가지고 온다.
         $products_first = \App\Product::latest('id')->first('serial_name');
         
+        //dd($products_first);
+        //만약 시리얼 번호가 없으면..
+        if($products_first == null){
+            $products_first = '19A0001';
+        //숫자만 남긴다. 0005
+        $serial_start_no_int=substr($products_first,3,4);
+        //앞에만 남긴다. 19A
+        $serial_start_no_start=substr($products_first,0,3);
+        }
+
         //숫자만 남긴다. 0005
         $serial_start_no_int=substr($products_first->serial_name,3,4);
         
