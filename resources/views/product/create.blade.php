@@ -20,8 +20,21 @@
     		</div>
 
         <div class="field">
-          <input class="input {{ $errors->has('board_name') ? 'is-danger' : '' }}" type="text" name="board_name" value="{{ old('board_name') }}" placeholder="보드명">
+          <div class="ui selection dropdown">
+            <input type="hidden" name="board_name">
+            <i class="dropdown icon"></i>
+            <div class="default text" style="color: black">보드명</div>
+            <div class="menu">
+              @foreach ($pcb_lists as $pcb_list)
+                 <div class="item">{{$pcb_list->board_name }}</div>
+               <input type="hidden" name="aoi_top_part_num" value="{{$pcb_list->top_num   }}">
+               <input type="hidden" name="aoi_bot_part_num" value="{{$pcb_list->bot_num   }}">
+               @endforeach
+            </div>
+          </div>
         </div>
+
+       
 
     		<div class="field">
     			<button class="ui button" type="submit">시리얼번호 작성</button>
@@ -39,13 +52,13 @@
     	</div>	
     	@endif	
 
-    	<div class="ui unstackable steps">
+    	<div class="ui tablet stackable steps"">
     		@for ($i = 1; $i < 13; $i++)
          <!-- 현재월이 과 같다면 색깔들어오게 -->
     			 @if (date('m') == $i)
-    		<div class="active step" style="padding: 15px; background-color: tomato">
+    		<div class="active step" style="padding: 15px;">
     			 @else
-        <div class="step" style="padding: 15px;">
+        <div class="step" style="padding: 10px;">
             @endif
           <div class="content" >
     				<div><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ $i }}월 </font></font><br>
@@ -93,7 +106,7 @@
     <th class="ui center aligned">시리얼번호</th>
     <th class="ui center aligned">보드명</th>
     <th class="ui center aligned">생산일</th>
-    <th class="ui center aligned">내용</th>
+   {{--  <th class="ui center aligned">내용</th> --}}
   </tr></thead>
   @foreach ($products as $product)
   <tbody>
@@ -102,7 +115,7 @@
         <p class="ui center aligned">
         	{{ $product->id }}
       </td>
-      <td class="ui center aligned" style="padding: 3px;"> 	
+      <td class="ui center aligned"> 	
         {{ $product->serial_name }}
       </td>
       <td class="ui center aligned">
@@ -111,7 +124,7 @@
       <td class="ui center aligned">
         {{ $product->product_date }}
       </td>
-      <td class="ui center aligned">내용</td>
+     {{--  <td class="ui center aligned">내용</td> --}}
     </tr>
   </tbody>
   @endforeach

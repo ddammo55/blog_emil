@@ -17,11 +17,10 @@ use Faker\Generator as Faker;
 
 $factory->define(Pcb_list::class, function (Faker $faker) {
     return [
-        'board_name' => $faker->sentence(),
-        'top_num' => RandomRange(10,99),
-        'bot_num' => RandomRange(10,99),
-        'unit' => $faker->sentence(), 
-        'note' => $faker->sentence(),
-        'description' => $faker->paragraph(),    
+        'board_name' => str_random(6),
+        'top_num' => rand(10,99),
+        'bot_num' => rand(10,99),
+        'unit' => str_random(10), 
+        'note' => $faker->sentence(),  
     ];
 });

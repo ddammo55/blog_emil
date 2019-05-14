@@ -22,7 +22,8 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
+    {   
+        //전체 시리얼번호
         $products = \App\Product::latest('id')->paginate(15); 
 
         //시리얼 번호 최근 컬럼을 가지고 온다.
@@ -31,29 +32,42 @@ class ProductController extends Controller
         //dd($products_first);
         //만약 시리얼 번호가 없으면..
         if($products_first == null){
-            $products_first = '19A0001';
+            $products_first = '11A0001';
         //숫자만 남긴다. 0005
         $serial_start_no_int=substr($products_first,3,4);
         //앞에만 남긴다. 19A
         $serial_start_no_start=substr($products_first,0,3);
-        }
-
+        }else{
         //숫자만 남긴다. 0005
         $serial_start_no_int=substr($products_first->serial_name,3,4);
         
         //앞에만 남긴다. 19A
         $serial_start_no_start=substr($products_first->serial_name,0,3);
 
+        }
         //숫자1을 더한다. 0006
         $ttr = sprintf("%04d",$serial_start_no_int+1);
+
 
         //다시 영문과 숫자를 합친다.
         $final_serial_name = $serial_start_no_start.$ttr;
 
         //마지막 시리얼번호 + 0001 한 결과변수
-        //$final_serial_name;
+        $final_serial_name;
 
-        return view('product.create',compact('products','final_serial_name'));
+        #|--------------------------------------------------------------------------
+        #| 보드명
+        #|--------------------------------------------------------------------------
+        $pcb_lists = \App\Pcb_list::get();
+
+        //dd($board);
+
+        //$board_name = $board->board_name;
+
+        //echo $board->board_name;
+
+
+        return view('product.create',compact('products','final_serial_name','pcb_lists'));
     }
 
     /**
@@ -132,6 +146,8 @@ class ProductController extends Controller
             'serial_name' => $serial_name,
             'board_name' => request('board_name'),
             'product_date' => NOW(),
+            'aoi_top_part_num' => request('aoi_top_part_num'),
+            'aoi_bot_part_num' => request('aoi_bot_part_num'),
 
         ]);
     }
