@@ -21,6 +21,35 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function product_create()
+    {
+        //시리얼 번호 최근 컬럼을 가지고 온다.
+        $products_first = \App\Product::latest('id')->first('serial_name');
+
+        //보드명
+        $board_name = request()->board_name;
+
+        echo '<br>';
+        //수량
+        $quantity = request()->quantity;
+        
+        //숫자만 남긴다. 0005
+        echo $serial_start_no_int=substr($products_first->serial_name,3,4);
+        //앞에만 남긴다. 19A
+        echo $serial_start_no_start=substr($products_first->serial_name,0,3);
+
+
+        //현재의 시리얼번호
+
+        // 분리하기
+
+        // 현재의 시리얼번호 + pcb수량
+
+        // 합치기
+
+        //return 'product_create';
+    }
+
     public function create()
     {   
         //전체 시리얼번호

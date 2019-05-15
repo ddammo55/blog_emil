@@ -4,7 +4,7 @@
 #| 메인
 #|--------------------------------------------------------------------------
 Route::get('/', function () {
-    return view('semantic');
+    return view('product');
 });
 
 #|--------------------------------------------------------------------------
@@ -36,5 +36,6 @@ Route::resource('/posts','PostsController');
 #| 추적성 관리
 #|--------------------------------------------------------------------------
 Route::resource('/product','ProductController');
+Route::post('/product_create',['as' => 'product_create', 'uses' => 'ProductController@product_create']);
 
 
