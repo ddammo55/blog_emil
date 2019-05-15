@@ -26,6 +26,7 @@ class ProductRequest extends FormRequest
         return [
             'serial_start_no' => 'required|regex:/[0-9]{2}[a-lA-L]{1}[[0-9]{4}/',
             'serial_end_no' => 'required|min:4|regex:/[0-9]{2}[a-lA-L]{1}[[0-9]{4}/',
+            'quantity' => 'required|regex:/[1-9]/',
         ];
 
     }

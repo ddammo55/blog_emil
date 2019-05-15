@@ -27,7 +27,7 @@
 
         <!--장수 -->
         <div class="field">
-         <input class="input {{ $errors->has('serial_start_no') ? 'is-danger' : '' }}" type="number" name="quantity" value="50" placeholder="장수">
+         <input class="input {{ $errors->has('serial_start_no') ? 'is-danger' : '' }}" type="number" name="quantity" value="0" placeholder="장수">
        </div>
 
 

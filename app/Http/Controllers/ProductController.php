@@ -16,11 +16,7 @@ class ProductController extends Controller
        return view('product.index',compact('products'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function product_create()
     {
         //시리얼 번호 최근 컬럼을 가지고 온다.
@@ -34,20 +30,55 @@ class ProductController extends Controller
         $quantity = request()->quantity;
         
         //숫자만 남긴다. 0005
-        echo $serial_start_no_int=substr($products_first->serial_name,3,4);
+        $serial_start_no_int=substr($products_first->serial_name,3,4);
+
+        //숫자 남긴거 +1
+        $ttr = sprintf("%04d",$serial_start_no_int+1);
+        
         //앞에만 남긴다. 19A
-        echo $serial_start_no_start=substr($products_first->serial_name,0,3);
+        $serial_start_no_start=substr($products_first->serial_name,0,3);
+
+        //***[완성]*** 11a0011
+        $serial_start_no = $serial_start_no_start.$ttr;
 
 
-        //현재의 시리얼번호
+        //현재숫자와 보드작업수량을 합친다. 53
+        $sum_serial_number = sprintf("%04d",$serial_start_no_int) + sprintf("%04d",$quantity);
 
-        // 분리하기
+        //0053
+        $eee = sprintf("%04d",$sum_serial_number);
+        
+        //***[완성]*** 11a0060
+        $serial_end_no = $serial_start_no_start.$eee;
 
-        // 현재의 시리얼번호 + pcb수량
+        // 초기값
+       $y=0;
+       $i=0;
 
-        // 합치기
+        for($i=$ttr;$i<=$eee;$i++){
+        $y+=1;
+        $i=(int)$i;
+        $serial_name=$serial_start_no_start.sprintf("%04d",$i);
 
-        //return 'product_create';
+        //대문자변환
+        $serial_name=strtoupper($serial_name);
+
+        $serial_name_arr[] = $serial_name;
+
+        //echo $tty = $serial_name_arr;
+
+        Product::create([
+            'serial_name' => $serial_name,
+            'board_name' => request('board_name'),
+            'product_date' => NOW(),
+            'aoi_top_part_num' => request('aoi_top_part_num'),
+            'aoi_bot_part_num' => request('aoi_bot_part_num'),
+
+        ]);
+        
+    }
+        return view('product.create_list',compact('serial_name_arr'));
+
     }
 
     public function create()
@@ -179,7 +210,7 @@ class ProductController extends Controller
             'aoi_bot_part_num' => request('aoi_bot_part_num'),
 
         ]);
-    }
+        }
     }
 }
        return view('product.create_list',compact('serial_name_arr'));
