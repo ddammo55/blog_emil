@@ -22,6 +22,11 @@ class ProductController extends Controller
         //시리얼 번호 최근 컬럼을 가지고 온다.
         $products_first = \App\Product::latest('id')->first('serial_name');
 
+        if(request('board_name') == null || request('quantity') == 0 || request('quantity') == 201){
+             echo "<script>alert(\"보드명과 수량을 확인하여주세요.\");</script>";
+             echo "<script> history.back()</script>";
+        }else{
+
         //보드명
         $board_name = request()->board_name;
 
@@ -63,6 +68,7 @@ class ProductController extends Controller
         //대문자변환
         $serial_name=strtoupper($serial_name);
 
+
         $serial_name_arr[] = $serial_name;
 
         //echo $tty = $serial_name_arr;
@@ -75,10 +81,10 @@ class ProductController extends Controller
             'aoi_bot_part_num' => request('aoi_bot_part_num'),
 
         ]);
-        
+       
     }
         return view('product.create_list',compact('serial_name_arr'));
-
+}
     }
 
     public function create()
