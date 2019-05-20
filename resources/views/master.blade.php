@@ -82,8 +82,8 @@
       시리얼번호 입력
     </a>
 
-    <a class="item" href="/introduction/build-tools.html">
-      ---
+    <a class="item" href="/shipment">
+      출하내역 입력
     </a>
 </div>
 

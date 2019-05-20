@@ -31,9 +31,12 @@ Route::get('profile', function () {
 Route::resource('/posts','PostsController');
 
 #|--------------------------------------------------------------------------
-#| 추적성 관리
+#| 보드입력
 #|--------------------------------------------------------------------------
 Route::resource('/product','ProductController');
 Route::post('/product_create',['as' => 'product_create', 'uses' => 'ProductController@product_create']);
 
-
+#|--------------------------------------------------------------------------
+#| 출하내역 관리
+#|--------------------------------------------------------------------------
+Route::resource('/shipment','ShipmentsController');
