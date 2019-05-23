@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Shipment;
 class ShipmentsController extends Controller
 {
     /**
@@ -16,7 +16,7 @@ class ShipmentsController extends Controller
 
 
         $products = \App\Product::latest()->paginate(15);
-       //$products = ["딸기","바나나","파인애플"];
+        //$products = ["딸기","바나나","파인애플"];
         return view('shipment.s1',compact('products'));
     }
 
@@ -40,8 +40,20 @@ class ShipmentsController extends Controller
     {
         //echo $_POST['items_left'];
 
-        dd(request()->all());
+        //dd(request()->all());
+        //시리얼번호 가지고 온다
+        $serial_name = \App\Product::get('serial_name');
 
+
+        $skills = request('skills');
+        dd($skills);
+
+        if($serial_name == $skills){
+
+        }
+
+        //$products->update(request(['serial_name',]))
+        //dd($shipment);
          // for ($i=0;$i<10;$i++){
          //    $serial_name = $_POST['submit_button'][$i];
          // }

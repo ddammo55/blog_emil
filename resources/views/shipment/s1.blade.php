@@ -7,7 +7,7 @@
 <div class="ui segment">
   <div class="ui three column very relaxed grid">
 
-    <div class="six wide column">
+    <div class="four wide column">
  
         <form method="post" action="/shipment" name="combo_box">
           @csrf      
@@ -22,12 +22,12 @@
 
         </div>
 
-        <div class="middle aligned column four wide column"> 
+        <div class="middle aligned column eight wide column"> 
           
          <div class="ui form">
           <div class="field">
             <label>프로젝트</label>
-            <input type="text" name="">
+            <input type="text" name="t1">
           </div>
         </div>
 
@@ -36,7 +36,7 @@
         <div class="ui form">
           <div class="field">
             <label>출하일</label>
-            <input type="date" name="">
+            <input type="date" name="t2">
           </div>
         </div>
 
@@ -45,7 +45,7 @@
         <div class="ui form">
           <div class="field">
             <label>인수자</label>
-            <input type="text" name="">
+            <input type="text" name="t3">
           </div>
         </div>
 
@@ -54,7 +54,7 @@
         <div class="ui form">
           <div class="field">
             <label>노트</label>
-            <input type="text" name="">
+            <input type="text" name="t4">
           </div>
         </div>
 
@@ -66,10 +66,11 @@
            <input class="ui button" type="button" onClick="move(this.form.list2,this.form.list1)" value="<<" id=button1 name=button1>
            <input class="ui button" type="button" onClick="move(this.form.list1,this.form.list2)" value=">>" id=button2 name=button2>
            <input class="ui button" type="submit" name="submit_button" value="입력" onClick="selectAll(document.combo_box.list2);">
+           <input class="ui button" type="reset" value="초기화">
   
        </div>
 
-       <div class="six wide column">
+       <div class="four wide column">
        
         <p>출하 시리얼번호</p>
 
