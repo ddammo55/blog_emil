@@ -15,8 +15,8 @@ class ShipmentsController extends Controller
     {
 
 
-        //$products = \App\Product::latest()->paginate(15);
-       $products = ["딸기","바나나","파인애플"];
+        $products = \App\Product::latest()->paginate(15);
+       //$products = ["딸기","바나나","파인애플"];
         return view('shipment.s1',compact('products'));
     }
 

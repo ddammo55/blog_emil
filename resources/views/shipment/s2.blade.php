@@ -1,9 +1,9 @@
 <html>
 <head>
-	<title>http://www.blueb.co.kr</title>
+     <title></title>
 
 
-<script type="text/javascript">
+     <script type="text/javascript">
 
 // PickList II script (aka Menu Swapper)- By Phil Webb (http://www.philwebb.com)
 // Visit JavaScript Kit (http://www.javascriptkit.com) for this JavaScript and 100s more
@@ -42,16 +42,16 @@ function move(fbox, tbox) {
           fbox[c] = no;
      }
      for(c=0; c<arrTbox.length; c++) {
-     	var no = new Option();
-     	no.value = arrLookup[arrTbox[c]];
-     	no.text = arrTbox[c];
-     	tbox[c] = no;
+          var no = new Option();
+          no.value = arrLookup[arrTbox[c]];
+          no.text = arrTbox[c];
+          tbox[c] = no;
      }
 }
 
 function selectAll(box) {
      for(var i=0; i<box.length; i++) {
-     box[i].selected = true;
+          box[i].selected = true;
      }
 }
 
@@ -63,28 +63,26 @@ function selectAll(box) {
 
 
 
+     <form method="post" action="s1_proc.php" name="combo_box">
 
-
-<form method="post" action="shipment" name="combo_box">
-     @csrf
-<table cellpadding="4" cellspacing="0" border="0">
-<tr>
-<td>
-<select multiple size="10" name="list1" style="width:150" onDblClick="move(document.combo_box.list1,document.combo_box.list2)">
-    @foreach($products as $product )
-    <option>{{$product->serial_name}}</option>
-    @endforeach
-</select>
-</td>
-<td align="center" valign="middle">
-<input type="button" onClick="move(this.form.list2,this.form.list1)" value="<<" id=button1 name=button1>
-<input type="button" onClick="move(this.form.list1,this.form.list2)" value=">>" id=button2 name=button2>
-</td>
-<td>
-<select multiple size="10" name="list2" style="width:150" onDblClick="move(document.combo_box.list2,document.combo_box.list1)">
-</select>
-</td>
-</tr>
-<tr><td align="center" colspan="3"><input type="submit" name="submit_button" onClick="selectAll(document.combo_box.list2);"></td></tr>
-</table>
-</form>
+          <table cellpadding="4" cellspacing="0" border="0">
+               <tr>
+                    <td>
+                         <select multiple size="10" name="list1" style="width:150" onDblClick="move(document.combo_box.list1,document.combo_box.list2)">
+                              <?php foreach($products as $product ){ ?>
+                                  <option><?=$product ?></option>
+                                  <?php }?>
+                             </select>
+                        </td>
+                        <td align="center" valign="middle">
+                         <input type="button" onClick="move(this.form.list2,this.form.list1)" value="<<" id=button1 name=button1>
+                         <input type="button" onClick="move(this.form.list1,this.form.list2)" value=">>" id=button2 name=button2>
+                    </td>
+                    <td>
+                         <select multiple size="10" id="list2" name="skills[]" style="width:150" onDblClick="move(document.combo_box.list2,document.combo_box.list1)">
+                         </select>
+                    </td>
+               </tr>
+               <tr><td align="center" colspan="3"><input type="submit" name="submit_button" onClick="selectAll(document.combo_box.list2);"></td></tr>
+          </table>
+     </form>
