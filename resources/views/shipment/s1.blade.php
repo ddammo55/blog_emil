@@ -27,7 +27,7 @@
          <div class="ui form">
           <div class="field">
             <label>프로젝트</label>
-            <input type="text" name="t1">
+            <input type="text" name="project">
           </div>
         </div>
 
@@ -36,7 +36,7 @@
         <div class="ui form">
           <div class="field">
             <label>출하일</label>
-            <input type="date" name="t2">
+            <input type="date" name="shipment_date">
           </div>
         </div>
 

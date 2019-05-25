@@ -57,10 +57,12 @@ class CreateProductsTable extends Migration
             $table->integer('set_set')->nullable();                        #편성
             $table->integer('faulty')->default(0);                         #불량
             $table->string('remarks')->nullable();                     #불량내역
-            $table->string('type')->nullable();                        #불량내역
-            $table->string('wr_user')->nullable();                     #등록한유저
-            $table->ipAddress('marks')->nullable();                    #등록아이피
-            $table->ipAddress('mod_user')->nullable();                 #수정아이피
+            $table->string('type')->nullable();                        #타입
+            $table->string('ship_user')->nullable();                        #인계자
+            $table->string('receiver')->nullable();                        #인수자
+            $table->string('receiver_team')->nullable();                    #인수팀
+            $table->string('mod_user')->nullable();                     #수정한유저
+            $table->ipAddress('mark_ip')->nullable();                  #등록아이피
             $table->timestamps();
         });
     }

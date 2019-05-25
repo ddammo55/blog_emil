@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Shipment;
+use App\Product;
 class ShipmentsController extends Controller
 {
     /**
@@ -15,7 +16,7 @@ class ShipmentsController extends Controller
     {
 
 
-        $products = \App\Product::latest()->paginate(15);
+        $products = \App\Product::all();
         //$products = ["딸기","바나나","파인애플"];
         return view('shipment.s1',compact('products'));
     }
@@ -44,13 +45,19 @@ class ShipmentsController extends Controller
         //시리얼번호 가지고 온다
         $serial_name = \App\Product::get('serial_name');
 
-
+        //시리얼번호를 배열로 가지고 온다.
         $skills = request('skills');
-        dd($skills);
 
-        if($serial_name == $skills){
+        //시리얼번호 수량
+        $skills_count = count($skills);
 
+        for($i=0; $i<$skills_count; $i++){
+        Product::where('serial_name',$skills[$i])->update([
+            'board_name' => request('t1'),
+        ]);
         }
+
+        return back();
 
         //$products->update(request(['serial_name',]))
         //dd($shipment);
