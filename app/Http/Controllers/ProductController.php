@@ -11,7 +11,7 @@ class ProductController extends Controller
 
     public function index()
     {
-     $products = \App\Product::latest()->paginate(15); 
+        $products = \App\Product::latest()->paginate(15); 
 
        return view('product.index',compact('products'));
     }
@@ -89,8 +89,8 @@ class ProductController extends Controller
 
     public function create()
     {   
-        //전체 시리얼번호
-        $products = \App\Product::latest('id')->paginate(15); 
+        //전체 시리얼번호 [최근시리얼번호 조회]
+        $products = \App\Product::latest('id')->paginate(30); 
 
         //시리얼 번호 최근 컬럼을 가지고 온다.
         $products_first = \App\Product::latest('id')->first('serial_name');
@@ -124,7 +124,7 @@ class ProductController extends Controller
         #|--------------------------------------------------------------------------
         #| 보드명
         #|--------------------------------------------------------------------------
-        $pcb_lists = \App\Pcb_list::get();
+        $pcb_lists = \App\Project::get();
 
         //dd($board);
 

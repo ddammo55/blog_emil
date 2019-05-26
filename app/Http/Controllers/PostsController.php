@@ -63,6 +63,7 @@ class PostsController extends Controller
 #|--------------------------------------------------------------------------    
     public function show(Post $post)
     {
+        dd($post);
         return view('posts.show',compact('post'));
     }
 
@@ -71,6 +72,7 @@ class PostsController extends Controller
 #|--------------------------------------------------------------------------     
     public function edit(Post $post)
     {
+        dd($post);
         return view('posts.edit',compact('post'));
     }
 

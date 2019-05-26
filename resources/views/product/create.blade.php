@@ -129,7 +129,7 @@
 <div class="column">
   <h1>최근 시리얼번호</h1>
 
-  <table class="ui celled padded table">
+  <table class="ui celled table">
     <thead>
       <tr><th class="ui center aligned">ID</th>
         <th class="ui center aligned">시리얼번호</th>

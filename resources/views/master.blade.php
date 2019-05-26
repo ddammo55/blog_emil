@@ -27,6 +27,10 @@
    color:white;
    font-size: 15px;
  }
+
+ .ui.table td{
+    padding: 1px;
+ }
 </style>
 <body>
   <div class="ui sidebar visible inverted vertical menu">
@@ -105,7 +109,7 @@
   </div>
 </div>
 <div class="item">
-  <div class="header">참고 자료</div>
+  <div class="header">작업 일지</div>
   <div class="menu">
 
     <a class="item" href="/usage/theming.html">
@@ -119,17 +123,18 @@
   </div>
 </div>
 <div class="item">
-  <div class=" header">참고 자료</div>
+  <div class=" header">리스트 관리(관리자)</div>
   <div class="menu">
-
-    <a class="item" href="/globals/reset.html">
-      Reset
-
+    <a class="item" href="/projects">
+      프로젝트 관리
     </a>
 
-    <a class="item" href="/globals/site.html">
-      Site
+    <a class="item" href="/boardnames">
+      보드명 관리
+    </a>
 
+    <a class="item" href="/projects/create">
+      출하내역 관리
     </a>
 
   </div>

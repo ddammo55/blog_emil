@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class Pcb_listsTableSeeder extends Seeder
+class ProjectTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class Pcb_listsTableSeeder extends Seeder
      */
     public function run()
     {
-       factory(App\Pcb_list::class, 50)->create();
+        factory(App\Project::class, 50)->create();
     }
 }

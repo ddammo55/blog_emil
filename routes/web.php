@@ -40,3 +40,10 @@ Route::post('/product_create',['as' => 'product_create', 'uses' => 'ProductContr
 #| 출하내역 관리
 #|--------------------------------------------------------------------------
 Route::resource('/shipment','ShipmentsController');
+
+
+#|--------------------------------------------------------------------------
+#| 보드명 관리
+#|--------------------------------------------------------------------------
+Route::resource('/boardnames','Board_namesController');
+Route::resource('/projects','ProjectsController');

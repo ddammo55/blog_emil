@@ -53,7 +53,7 @@
 
         <div class="ui form">
           <div class="field">
-            <label>노트</label>
+            <label>메모</label>
             <input type="text" name="t4">
           </div>
         </div>
