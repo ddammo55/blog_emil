@@ -18,9 +18,9 @@ use Faker\Generator as Faker;
 $factory->define(Project::class, function (Faker $faker) {
     return [
         'project_name' => str_random(6),
-        'project_code' => rand(10,99),
+        'project_code' => str_random(6),
         'car' => rand(10,99),
         'kinds' => str_random(10), 
-        'note' => $faker->sentence(),   
+        'note' => str_random(6),   
     ];
 });

@@ -40,7 +40,7 @@
 				@method('DELETE')
 				@csrf
 				<div class="field">
-				<button class="ui button" type="submit">글 삭제</button>   
+				<button class="ui button" type="submit" onclick="button_event();">글 삭제</button>   
 				</div> 
 			</form>
 
@@ -60,6 +60,30 @@
 	</div>
 </div>
 
+<div class="ui modal">
+  <div class="header">Header</div>
+  <div class="content">
+    <p></p>
+  </div>
+  <div class="actions">
+    <div class="ui approve button">Approve</div>
+    <div class="ui button">Neutral</div>
+    <div class="ui cancel button">Cancel</div>
+  </div>
+</div>
 
+
+
+<script type="text/javascript">
+<!--
+function button_event(){
+if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+    document.form.submit();
+}else{   //취소
+    return;
+}
+}
+//-->
+</script>
 
 @endsection
