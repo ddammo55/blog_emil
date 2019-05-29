@@ -96,8 +96,14 @@ class ProjectsController extends Controller
      */
     public function destroy(Project $project)
     {
+        //dd(request());
+        if(request('t1') == 't1'){
         $project->delete();
         flash('입력이 정상적으로 삭제되었습니다.');
-        return redirect('/projects');
+        //echo "dd";
+       return redirect('/projects');
+        }else{
+        return back();    
+        }
     }
 }

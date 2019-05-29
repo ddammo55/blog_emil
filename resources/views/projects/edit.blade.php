@@ -36,13 +36,15 @@
 				</div>
 			</form>
 
-			<form method="POST" action="/projects/{{ $project->id }}">
+	<!-- 		<form method="POST" action="/projects/{{ $project->id }}">
 				@method('DELETE')
-				@csrf
+				@csrf -->
 				<div class="field">
 				<button class="ui button" type="submit" onclick="button_event();">글 삭제</button>   
 				</div> 
-			</form>
+
+<!-- 
+			</form> -->
 
 			@if($errors->any())
 			<div class="ui pink inverted segment">
@@ -60,30 +62,44 @@
 	</div>
 </div>
 
+
+
+
+
 <div class="ui modal">
-  <div class="header">Header</div>
-  <div class="content">
-    <p></p>
-  </div>
-  <div class="actions">
-    <div class="ui approve button">Approve</div>
-    <div class="ui button">Neutral</div>
-    <div class="ui cancel button">Cancel</div>
-  </div>
+	<i class="close icon"></i>
+	<div class="header">
+		Modal Title
+	</div>
+	<div class="image content">
+		<div class="image">
+			An image can appear on left or an icon
+		</div>
+		<div class="description">
+			A description can appear on the right
+		</div>
+	</div>
+	<div class="actions">
+		<div class="ui black deny button">
+			<font style="vertical-align: inherit;">아니</font>
+		</div>
+		<div class="ui positive right labeled icon button">
+			<form method="POST" action="/projects/{{ $project->id }}">
+				@method('DELETE')
+				@csrf
+				<input type="submit" name="t1" value="t1">
+			</form>
+		</div>
+	</div>
 </div>
 
 
-
 <script type="text/javascript">
-<!--
-function button_event(){
-if (confirm("정말 삭제하시겠습니까??") == true){    //확인
-    document.form.submit();
-}else{   //취소
-    return;
+ function button_event(){
+$('.ui.modal')
+  .modal('show')
+;
 }
-}
-//-->
 </script>
 
 @endsection
