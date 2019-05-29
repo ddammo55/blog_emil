@@ -97,7 +97,7 @@ class ProjectsController extends Controller
     public function destroy(Project $project)
     {
         //dd(request());
-        if(request('t1') == 't1'){
+        if(request('DELETE') == 'DELETE'){
         $project->delete();
         flash('입력이 정상적으로 삭제되었습니다.');
         //echo "dd";

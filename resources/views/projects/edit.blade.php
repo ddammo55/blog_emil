@@ -6,7 +6,7 @@
 	<div class="ui column very relaxed grid">
 		<div class="wide column">
 			<h1>프로젝트명 수정</h1>
-			<form class="ui form" method="POST" action="/projects/{{ $project->id }}">
+			<form class="ui form" id="frm" method="POST" action="/projects/{{ $project->id }}">
 				@csrf
 				@method('PATCH')
 				<div class="field">
@@ -30,21 +30,14 @@
 				</div>
 
 
-
-				<div class="field">
-					<button class="ui button" type="submit">프로젝트명 수정</button>
-				</div>
 			</form>
 
-	<!-- 		<form method="POST" action="/projects/{{ $project->id }}">
-				@method('DELETE')
-				@csrf -->
-				<div class="field">
-				<button class="ui button" type="submit" onclick="button_event();">글 삭제</button>   
-				</div> 
+			<br>
+			<button class="ui secondary button" onclick="document.getElementById('frm').submit();"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+				프로젝트명 수정
+			</font></font></button>
 
-<!-- 
-			</form> -->
+			<button class="ui pink button"  onclick="button_event();">프로젝트 삭제</button>  
 
 			@if($errors->any())
 			<div class="ui pink inverted segment">
@@ -69,27 +62,39 @@
 <div class="ui modal">
 	<i class="close icon"></i>
 	<div class="header">
-		Modal Title
+			<i class="large red exclamation triangle icon"></i>
+			프로젝트명 삭제
 	</div>
 	<div class="image content">
 		<div class="image">
-			An image can appear on left or an icon
+			<h2>정말로 삭제하시겠습니까?</h2>
 		</div>
 		<div class="description">
-			A description can appear on the right
+			<h2>삭제하면 다시 복구할 수 없습니다.</h2>
 		</div>
 	</div>
 	<div class="actions">
-		<div class="ui black deny button">
-			<font style="vertical-align: inherit;">아니</font>
-		</div>
-		<div class="ui positive right labeled icon button">
-			<form method="POST" action="/projects/{{ $project->id }}">
+{{-- 		<div class="ui black deny button">
+			<font style="vertical-align: inherit;">취소</font>
+		</div> --}}
+		{{-- <div class="ui positive right labeled icon button"> --}}
+			<form method="POST" id="frm2" action="/projects/{{ $project->id }}">
 				@method('DELETE')
 				@csrf
-				<input type="submit" name="t1" value="t1">
+			{{-- 	<input type="submit" name="DELETE" value="DELETE"> --}}
 			</form>
-		</div>
+
+
+			<div class="ui black deny button">
+				<font style="vertical-align: inherit;">취소</font>
+			</div>  
+			<div>
+			<button class="ui secondary button" name="DELETE" value="DELETE" onclick="document.getElementById('frm2').submit();"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+				삭제
+			</font></font></button></div>
+
+			
+		{{-- </div> --}}
 	</div>
 </div>
 
