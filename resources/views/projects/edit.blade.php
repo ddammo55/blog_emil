@@ -74,27 +74,25 @@
 		</div>
 	</div>
 	<div class="actions">
-{{-- 		<div class="ui black deny button">
-			<font style="vertical-align: inherit;">취소</font>
-		</div> --}}
-		{{-- <div class="ui positive right labeled icon button"> --}}
-			<form method="POST" id="frm2" action="/projects/{{ $project->id }}">
-				@method('DELETE')
-				@csrf
-			{{-- 	<input type="submit" name="DELETE" value="DELETE"> --}}
-			</form>
 
-
-			<div class="ui black deny button">
-				<font style="vertical-align: inherit;">취소</font>
-			</div>  
-			<div>
-			<button class="ui secondary button" name="DELETE" value="DELETE" onclick="document.getElementById('frm2').submit();"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-				삭제
-			</font></font></button></div>
-
-			
-		{{-- </div> --}}
+		<table>
+			<tr>
+				<td>
+					<div class="ui black deny button">
+						<font style="vertical-align: inherit;">취소</font>
+					</div>
+				</td>
+	
+				<td>
+					<form method="POST" id="frm2" action="/projects/{{ $project->id }}">
+						@method('DELETE')
+						@csrf
+						<input class="ui black deny button" type="submit" name="DELETE" value="DELETE">
+					</form>
+				</td>
+			</tr>
+		</table>
+	
 	</div>
 </div>
 
