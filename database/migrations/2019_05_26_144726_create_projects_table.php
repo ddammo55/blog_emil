@@ -16,15 +16,15 @@ class CreateProjectsTable extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->string('project_name')->unique();
+            $table->string('project_name')->unique();  #프로젝트 명
 
-            $table->string('project_code')->nullable();
+            $table->string('project_code')->nullable();  #프로젝트코드
 
-            $table->integer('car')->nullable();
+            $table->integer('car')->nullable();    #량
 
-            $table->string('kinds')->nullable();
+            $table->string('kinds')->nullable();   #종류
 
-            $table->string('note')->nullable();
+            $table->string('note')->nullable();    #메모
 
             $table->timestamps();
         });

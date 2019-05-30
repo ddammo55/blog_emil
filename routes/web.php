@@ -31,10 +31,20 @@ Route::get('profile', function () {
 Route::resource('/posts','PostsController');
 
 #|--------------------------------------------------------------------------
-#| 보드입력
+#| 시리얼번호 입력
 #|--------------------------------------------------------------------------
 Route::resource('/product','ProductController');
 Route::post('/product_create',['as' => 'product_create', 'uses' => 'ProductController@product_create']);
+
+#|--------------------------------------------------------------------------
+#| 프로젝트 관리
+#|--------------------------------------------------------------------------
+Route::resource('/projects','ProjectsController');
+
+#|--------------------------------------------------------------------------
+#| 보드명 관리
+#|--------------------------------------------------------------------------
+Route::resource('/boardnames','BoardnamesController');
 
 #|--------------------------------------------------------------------------
 #| 출하내역 관리
@@ -42,8 +52,4 @@ Route::post('/product_create',['as' => 'product_create', 'uses' => 'ProductContr
 Route::resource('/shipment','ShipmentsController');
 
 
-#|--------------------------------------------------------------------------
-#| 보드명 관리
-#|--------------------------------------------------------------------------
-Route::resource('/boardnames','Board_namesController');
-Route::resource('/projects','ProjectsController');
+

@@ -67,32 +67,33 @@
 	</div>
 	<div class="image content">
 		<div class="image">
-			<h2>정말로 삭제하시겠습니까?</h2>
+			<h3>정말로 삭제하시겠습니까?</h3>
 		</div>
 		<div class="description">
-			<h2>삭제하면 다시 복구할 수 없습니다.</h2>
+			<h3>삭제하면 다시 복구할 수 없습니다.</h3>
 		</div>
 	</div>
 	<div class="actions">
+		<div style="border: 1px; float:right">
+			<table>
+				<tr>
+					<td class="right floated content" >
+						<div class="ui black deny button" >
+							<font style="vertical-align: inherit;">취소</font>
+						</div>
+					</td>
 
-		<table>
-			<tr>
-				<td>
-					<div class="ui black deny button">
-						<font style="vertical-align: inherit;">취소</font>
-					</div>
-				</td>
-	
-				<td>
-					<form method="POST" id="frm2" action="/projects/{{ $project->id }}">
-						@method('DELETE')
-						@csrf
-						<input class="ui black deny button" type="submit" name="DELETE" value="DELETE">
-					</form>
-				</td>
-			</tr>
-		</table>
-	
+					<td>
+						<form method="POST" id="frm2" action="/projects/{{ $project->id }}">
+							@method('DELETE')
+							@csrf
+							<button class="ui pink deny button" type="submit" name="DELETE" value="DELETE">삭제</button>
+						</form>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<p style="clear: both;">
 	</div>
 </div>
 
