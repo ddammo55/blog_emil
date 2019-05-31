@@ -124,7 +124,7 @@ class ProductController extends Controller
         #|--------------------------------------------------------------------------
         #| 보드명
         #|--------------------------------------------------------------------------
-        $pcb_lists = \App\Project::get();
+        $pcb_lists = \App\Boardname::get();
 
         //dd($board);
 

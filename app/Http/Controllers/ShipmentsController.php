@@ -16,9 +16,10 @@ class ShipmentsController extends Controller
     {
 
 
-        $products = \App\Product::all();
+        $products = \App\Product::all(); // 제품 시리얼번호
+        $projects = \App\Project::all(); // 프로젝트 명
         //$products = ["딸기","바나나","파인애플"];
-        return view('shipment.s1',compact('products'));
+        return view('shipment.s1',compact('products','projects'));
     }
 
     /**
@@ -53,7 +54,7 @@ class ShipmentsController extends Controller
 
         for($i=0; $i<$skills_count; $i++){
         Product::where('serial_name',$skills[$i])->update([
-            'board_name' => request('t1'),
+            'board_name' => request('project'),
         ]);
         }
 
