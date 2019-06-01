@@ -5,7 +5,7 @@
 <div class="ui segment">
   <div class="ui two column very relaxed grid">
     <div class="five wide column">
-        <h1>프로젝트명 작성</h1>
+        <h1>프로젝트명 작성  ({{ $projects_count }}종)</h1>
     	<form class="ui form" method="POST" action="/projects">
     		@csrf
     		<div class="field">

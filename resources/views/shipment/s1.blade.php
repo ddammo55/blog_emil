@@ -12,11 +12,11 @@
         <form method="post" action="/shipment" name="combo_box">
           @csrf      
          
-            <p>시리얼번호</p>
+            <p>시리얼번호_보드명  ({{ $products->count() }})</p>
 
                   <select multiple size="10" name="list1" style="width:100%; height:500px" onDblClick="move(document.combo_box.list1,document.combo_box.list2)">
                     <?php foreach($products as $product ){ ?>
-                    <option><?=$product->serial_name ?></option>
+                    <option><?=$product->serial_name?></option>
                     <?php }?>
                   </select>
 
@@ -24,19 +24,25 @@
 
         <div class="middle aligned column eight wide column"> 
           
-         <div class="ui form">
-          <div class="field">
-            <label>프로젝트</label>
-            <input type="text" name="project">
+        <div class="field">
+          <div class="ui selection dropdown">
+            <input type="hidden" name="project" class="input {{ $errors->has('project') ? 'is-danger' : '' }}" value="{{ old('project') }}" required>
+            <i class="dropdown icon"></i>
+            <div class="default text" style="color: black">프로젝트 명</div>
+            <div class="menu">
+              @foreach ($projects as $project)
+              <div class="item">{{$project->project_name }}</div>
+              @endforeach
+            </div>
           </div>
         </div>
 
         <br>
-
+        <?php $dd = date("Y-m-d")?>
         <div class="ui form">
           <div class="field">
             <label>출하일</label>
-            <input type="date" name="shipment_date">
+            <input type="date" name="shipment_date" value="<?=$dd?>" required>
           </div>
         </div>
 
@@ -45,7 +51,7 @@
         <div class="ui form">
           <div class="field">
             <label>인수자</label>
-            <input type="text" name="t3">
+            <input type="text" name="receiver" name="project" class="input {{ $errors->has('receiver') ? 'is-danger' : '' }}" value="{{ old('receiver') }}" required>
           </div>
         </div>
 
@@ -54,10 +60,11 @@
         <div class="ui form">
           <div class="field">
             <label>메모</label>
-            <input type="text" name="t4">
+            <input type="text" name="note">
           </div>
         </div>
 
+        <input type="hidden" name="con" value="1">
 
           <div class="ui section divider"></div>
          
@@ -74,7 +81,7 @@
        
         <p>출하 시리얼번호</p>
 
-                  <select multiple size="10" id="list2" name="skills[]" style="width:100%; height:500px" onDblClick="move(document.combo_box.list2,document.combo_box.list1)">
+                  <select multiple size="10" id="list2" name="skills[]" class="input {{ $errors->has('skills[]') ? 'is-danger' : '' }}" value="{{ old('skills[]') }}" required style="width:100%; height:500px" onDblClick="move(document.combo_box.list2,document.combo_box.list1)">
                   </select>
 
           </form>
@@ -87,12 +94,16 @@
 
 
 
- <div class="ui form">
-  <div class="field">
-    <label>User Input</label>
-    <input type="text">
-  </div>
-</div>
+  @if($errors->any())
+  <div class="ui pink inverted segment">
+
+    <ul>  
+      @foreach ($errors->all() as $error)
+      <li>{{$error}}</li>
+      @endforeach
+    </ul>
+  </div>  
+  @endif
 
 
 

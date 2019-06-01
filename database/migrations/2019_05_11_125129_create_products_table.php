@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('board_name');                  #보드명
             $table->date('product_date');             #생산일
             $table->date('shipment')->nullable();                 #출하일
-            $table->integer('user_id')->nullable();              #유저아이디
+            $table->string('user_id')->nullable();              #유저아이디
             $table->integer('aoi_top_part_num')->default(0);               #AOI_top_부품수량
             $table->integer('aoi_top_df_num')->default(0);                 #AOI_top_불량수량
             $table->integer('aoi_top_df_01')->default(0);                  #미삽
@@ -52,12 +52,14 @@ class CreateProductsTable extends Migration
             $table->date('element_date')->nullable();             #관리입고일
             $table->integer('quantity')->default(1);                       #수량
             $table->integer('coting_t')->default(0);                       #코팅두께
-            $table->integer('coting_inp')->nullable();                     #코팅외관검사
-            $table->integer('shipment_daily')->nullable();                 #출하내역
+            $table->integer('coting_inp')->default(0);                     #코팅외관검사
+            $table->string('shipment_daily')->nullable();                 #출하내역
+            $table->integer('con')->default(0);                 #출하내역입력 0 = x , 1 = o
             $table->integer('set_set')->nullable();                        #편성
             $table->integer('faulty')->default(0);                         #불량
             $table->string('remarks')->nullable();                     #불량내역
             $table->string('type')->nullable();                        #타입
+            $table->string('note')->nullable();                        #메모
             $table->string('ship_user')->nullable();                        #인계자
             $table->string('receiver')->nullable();                        #인수자
             $table->string('receiver_team')->nullable();                    #인수팀

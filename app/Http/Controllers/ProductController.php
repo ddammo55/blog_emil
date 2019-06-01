@@ -79,7 +79,7 @@ class ProductController extends Controller
             'product_date' => NOW(),
             'aoi_top_part_num' => request('aoi_top_part_num'),
             'aoi_bot_part_num' => request('aoi_bot_part_num'),
-
+            'user_id' => auth()->user()->name, //입력한 사용자
         ]);
        
     }
@@ -214,6 +214,7 @@ class ProductController extends Controller
             'product_date' => NOW(),
             'aoi_top_part_num' => request('aoi_top_part_num'),
             'aoi_bot_part_num' => request('aoi_bot_part_num'),
+            'user_id' => auth()->user()->name, //입력한 사용자
 
         ]);
         }

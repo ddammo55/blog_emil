@@ -17,8 +17,9 @@ class ProjectsController extends Controller
     public function index()
     {
         $projects = \App\Project::latest('id')->paginate(25); 
+        $projects_count = count(\App\Project::all());
 
-       return view('projects.create',compact('projects')); 
+       return view('projects.create',compact('projects','projects_count')); 
     }
 
     /**

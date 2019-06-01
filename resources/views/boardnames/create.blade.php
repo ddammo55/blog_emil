@@ -5,11 +5,11 @@
 <div class="ui segment">
   <div class="ui two column very relaxed grid">
     <div class="five wide column">
-        <h1>보드명 작성</h1>
+        <h1>보드명 작성 ({{ $boardnames_count }}종)</h1>
     	<form class="ui form" method="POST" action="/boardnames">
     		@csrf
     		<div class="field">
-    			<input class="input {{ $errors->has('project_name') ? 'is-danger' : '' }}" type="text" name="boardname" value="{{ old('project_name') }}" placeholder="보드 명" required>
+    			<input class="input {{ $errors->has('boardname') ? 'is-danger' : '' }}" type="text" name="boardname" value="{{ old('boardname') }}" placeholder="보드 명" required>
     		</div>	
 
     		<div class="field">
@@ -21,7 +21,19 @@
     		</div>
 
     		<div class="field">
-    			<input class="input {{ $errors->has('method') ? 'is-danger' : '' }}" type="text" name="method" value="{{ old('method') }}" placeholder="방법" required>
+              <div class="ui selection dropdown">
+                <input class="input {{ $errors->has('method') ? 'is-danger' : '' }}" type="hidden" name="method" value="{{ old('method') }}" placeholder="방법" required>
+                <i class="dropdown icon"></i>
+                <div class="default text" style="color: black">작업방법</div>
+                <div class="menu">
+                  <div class="item">SMD</div>
+                  <div class="item">DIP</div>
+                  <div class="item">AS</div>
+                  <div class="item">외주</div>
+                  <div class="item">코팅</div>
+                  <div class="item">조립</div>
+                </div>
+              </div>
     		</div>
 
     		<div class="field">
@@ -64,7 +76,7 @@
     					@foreach ($boardnames as $boardname)
     				<tr>
     					<td>{!! $boardname->id!!}</td>
-    					<td><a href="/projects/{{ $boardname->id }}/edit">{{$boardname->boardname}}</a></td>
+    					<td><a href="/boardnames/{{ $boardname->id }}/edit">{{$boardname->boardname}}</a></td>
     					<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{!! $boardname->top_num!!}</font></font></td>
     					<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{!! $boardname->bot_num!!}</font></font></td>
     					<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{!! $boardname->method!!}</font></font></td>

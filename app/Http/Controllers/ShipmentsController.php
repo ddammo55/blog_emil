@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Shipment;
 use App\Product;
+use App\Http\Requests\ShipmentRequest;
 class ShipmentsController extends Controller
 {
     /**
@@ -38,36 +39,33 @@ class ShipmentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ShipmentRequest $request)
     {
-        //echo $_POST['items_left'];
 
-        //dd(request()->all());
         //시리얼번호 가지고 온다
         $serial_name = \App\Product::get('serial_name');
-
         //시리얼번호를 배열로 가지고 온다.
         $skills = request('skills');
-
+        //dd($skills);
         //시리얼번호 수량
         $skills_count = count($skills);
 
         for($i=0; $i<$skills_count; $i++){
-        Product::where('serial_name',$skills[$i])->update([
-            'board_name' => request('project'),
+        Product::where('serial_name',$skills[$i])->update([  //선택한 시리얼번호에 다음 값을 업데이트한다.
+            'shipment_daily' => request('project'),
+            'note' => request('note'),
+            'receiver' => request('receiver'),
+            'shipment' => NOW(),
+            'ship_user' => auth()->user()->name, //인계자
+            'mod_user' => auth()->user()->name, //수정한 유저
+            'mark_ip' => $_SERVER['REMOTE_ADDR'],
+            'coting_t' => rand(40,60), //코팅두께
+            'coting_inp' => 1,
+            'con' => 1, //출하내역 유뮤 
         ]);
-        }
-
+    }
+        flash('입력이 정상적으로 처리되었습니다.');
         return back();
-
-        //$products->update(request(['serial_name',]))
-        //dd($shipment);
-         // for ($i=0;$i<10;$i++){
-         //    $serial_name = $_POST['submit_button'][$i];
-         // }
-
-         // echo $serial_name;
-
     }
 
     /**

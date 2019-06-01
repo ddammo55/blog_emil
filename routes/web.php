@@ -5,6 +5,8 @@
 #|--------------------------------------------------------------------------
 Route::get('/', 'PostsController@index');
 
+
+
 #|--------------------------------------------------------------------------
 #| 로그인
 #|--------------------------------------------------------------------------
@@ -33,23 +35,23 @@ Route::resource('/posts','PostsController');
 #|--------------------------------------------------------------------------
 #| 시리얼번호 입력
 #|--------------------------------------------------------------------------
-Route::resource('/product','ProductController');
-Route::post('/product_create',['as' => 'product_create', 'uses' => 'ProductController@product_create']);
+Route::resource('/product','ProductController')->middleware('auth');
+Route::post('/product_create',['as' => 'product_create', 'uses' => 'ProductController@product_create'])->middleware('auth');
 
 #|--------------------------------------------------------------------------
 #| 프로젝트 관리
 #|--------------------------------------------------------------------------
-Route::resource('/projects','ProjectsController');
+Route::resource('/projects','ProjectsController')->middleware('auth');
 
 #|--------------------------------------------------------------------------
 #| 보드명 관리
 #|--------------------------------------------------------------------------
-Route::resource('/boardnames','BoardnamesController');
+Route::resource('/boardnames','BoardnamesController')->middleware('auth');
 
 #|--------------------------------------------------------------------------
 #| 출하내역 관리
 #|--------------------------------------------------------------------------
-Route::resource('/shipment','ShipmentsController');
+Route::resource('/shipment','ShipmentsController')->middleware('auth');
 
 
 
