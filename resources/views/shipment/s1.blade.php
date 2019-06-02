@@ -106,7 +106,7 @@
     </div>
 
       <div class="ui relaxed divided list" style="height: 350px;overflow: auto;">
-        <table class="ui celled table" style="margin-top: 30px;">
+        <table class="ui selectable celled table" style="margin-top: 30px;">
 
           <thead>
             <tr>
@@ -125,6 +125,7 @@
               <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">인수자</font></font></th>
               <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">인계자</font></font></th>
               <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">메모</font></font></th>
+              <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">con</font></font></th>
             </tr>
           </thead>
           <tbody>
@@ -132,14 +133,33 @@
             <tr>
               <td>{{$products_all->id}}</td>
               @if($products_all->updated_at == date("Y-m-d H:i:s"))
-               <td style="background-color:red; color: white">{{$products_all->serial_name}}</td>
+               <td style="background-color:#007CDF; color: white">{{$products_all->serial_name}}</td>
+               <td style="background-color:#007CDF; color: white"><a href="/boardnames/{{ $products_all->id }}/edit">{{$products_all->board_name}}</a></td>
+               <td style="background-color:#007CDF; color: white">{{$products_all->shipment_daily}}</td>
+               <td style="background-color:#007CDF; color: white">{{$products_all->product_date}}</td>
+               <td style="background-color:#007CDF; color: white">{{$products_all->shipment}}</td>
+               <td style="background-color:#007CDF; color: white">{{$products_all->set_set}}</td>
+               <td style="background-color:#007CDF; color: white">{{$products_all->faulty}}</td>
+               <td style="background-color:#007CDF; color: white">{{$products_all->remarks}}</td>
+               <td style="background-color:#007CDF; color: white">{{$products_all->type}}</td>
+               <td style="background-color:#007CDF; color: white">{{$products_all->coting_t}}</td>
+               <td style="background-color:#007CDF; color: white">{{$products_all->coting_inp}}</td>
+               <td style="background-color:#007CDF; color: white">{{$products_all->ship_user}}</td>
+               <td style="background-color:#007CDF; color: white">{{$products_all->receiver}}</td>
+               <td style="background-color:#007CDF; color: white">{{isset($products_all->note) ? mb_substr($products_all->note, 0,10) : ''}}</td>
+               <td>
+                <form method="post" action="/product/con/{{ $products_all->id }}">
+                  @csrf
+                  <input type="submit" value="지우기">  
+                </form>            
+              </td>
+
               @else
               <td>{{$products_all->serial_name}}</td>
-              @endif
               <td><a href="/boardnames/{{ $products_all->id }}/edit">{{$products_all->board_name}}</a></td>
               <td>{{$products_all->shipment_daily}}</td>
-              <td>{{$products_all->shipment}}</td>
               <td>{{$products_all->product_date}}</td>
+              <td>{{$products_all->shipment}}</td>
               <td>{{$products_all->set_set}}</td>
               <td>{{$products_all->faulty}}</td>
               <td>{{$products_all->remarks}}</td>
@@ -149,6 +169,15 @@
               <td>{{$products_all->ship_user}}</td>
               <td>{{$products_all->receiver}}</td>
               <td>{{isset($products_all->note) ? mb_substr($products_all->note, 0,10) : ''}}</td>
+              <td>
+                <form method="post" action="/product/con/{{ $products_all->id }}">
+                  @csrf
+                  <input type="submit" value="지우기">  
+                </form>            
+              </td>
+
+              @endif
+
             </tr>
             @endforeach
 

@@ -123,4 +123,21 @@ class ShipmentsController extends Controller
     {
         //
     }
+
+    public function con($id)
+    {
+        //dd($id);
+       $product = Product::find($id);
+       $product->con = 0;
+       $product->shipment_daily = '';
+       $product->shipment = null;
+       $product->coting_t = 0;
+       $product->coting_inp = 0;
+       $product->note = null;
+       $product->receiver = null;
+       $product->ship_user = null;
+       $product->save();
+
+       return back();
+    }
 }

@@ -52,6 +52,6 @@ Route::resource('/boardnames','BoardnamesController')->middleware('auth');
 #| 출하내역 관리
 #|--------------------------------------------------------------------------
 Route::resource('/shipment','ShipmentsController')->middleware('auth');
-
+Route::post('product/con/{id}', 'ShipmentsController@con');
 
 
