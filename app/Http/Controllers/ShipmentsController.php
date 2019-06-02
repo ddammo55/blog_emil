@@ -17,10 +17,11 @@ class ShipmentsController extends Controller
     {
 
 
-        $products = \App\Product::all(); // 제품 시리얼번호
+        $products = \App\Product::where('con', 0)->get(); // 제품 시리얼번호 con=0인것만 가져오기
+        $products_alls = \App\Product::latest('updated_at')->paginate(50); //여기서는 shipment순으로 가져온다.
         $projects = \App\Project::all(); // 프로젝트 명
         //$products = ["딸기","바나나","파인애플"];
-        return view('shipment.s1',compact('products','projects'));
+        return view('shipment.s1',compact('products','projects','products_alls'));
     }
 
     /**
@@ -44,9 +45,14 @@ class ShipmentsController extends Controller
 
         //시리얼번호 가지고 온다
         $serial_name = \App\Product::get('serial_name');
+
         //시리얼번호를 배열로 가지고 온다.
-        $skills = request('skills');
+        $skill = request('skills');
         //dd($skills);
+        foreach($skill as $v) { //시리얼번호 19A001_boardname 보드명을 지우고 배열에 담는다.
+            $skills[] = explode('_',$v)[0];
+        }
+
         //시리얼번호 수량
         $skills_count = count($skills);
 
@@ -63,9 +69,14 @@ class ShipmentsController extends Controller
             'coting_inp' => 1,
             'con' => 1, //출하내역 유뮤 
         ]);
+        
     }
+
         flash('입력이 정상적으로 처리되었습니다.');
+
+        //만약에 결과보기를 클릭하면
         return back();
+
     }
 
     /**

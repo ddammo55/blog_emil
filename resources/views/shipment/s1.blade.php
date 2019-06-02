@@ -14,9 +14,9 @@
          
             <p>시리얼번호_보드명  ({{ $products->count() }})</p>
 
-                  <select multiple size="10" name="list1" style="width:100%; height:500px" onDblClick="move(document.combo_box.list1,document.combo_box.list2)">
+                  <select multiple size="10" name="list1" style="width:100%; height:350px" onDblClick="move(document.combo_box.list1,document.combo_box.list2)">
                     <?php foreach($products as $product ){ ?>
-                    <option><?=$product->serial_name?></option>
+                    <option><?=$product->serial_name.'_'.$product->board_name?></option>
                     <?php }?>
                   </select>
 
@@ -68,11 +68,9 @@
 
           <div class="ui section divider"></div>
          
-          
-
            <input class="ui button" type="button" onClick="move(this.form.list2,this.form.list1)" value="<<" id=button1 name=button1>
            <input class="ui button" type="button" onClick="move(this.form.list1,this.form.list2)" value=">>" id=button2 name=button2>
-           <input class="ui button" type="submit" name="submit_button" value="입력" onClick="selectAll(document.combo_box.list2);">
+           <input class="ui teal button" type="submit" name="submit_button" value="입력" onClick="selectAll(document.combo_box.list2);">
            <input class="ui button" type="reset" value="초기화">
   
        </div>
@@ -81,7 +79,7 @@
        
         <p>출하 시리얼번호</p>
 
-                  <select multiple size="10" id="list2" name="skills[]" class="input {{ $errors->has('skills[]') ? 'is-danger' : '' }}" value="{{ old('skills[]') }}" required style="width:100%; height:500px" onDblClick="move(document.combo_box.list2,document.combo_box.list1)">
+                  <select multiple size="10" id="list2" name="skills[]" class="input {{ $errors->has('skills[]') ? 'is-danger' : '' }}" value="{{ old('skills[]') }}" required style="width:100%; height:350px" onDblClick="move(document.combo_box.list2,document.combo_box.list1)">
                   </select>
 
           </form>
@@ -94,6 +92,77 @@
 
 
 
+
+{{-- 최근입력 시리얼번호 --}}
+<div class="ui existing segment">
+  <div class="ui attached top label">
+    <span class="title">최근 입력한 출하 내역    
+      {{-- 페이지네이션 --}}
+      <div class="ui right floated pagination menu">
+        @if($products_alls->count())
+        {{ $products_alls->links() }}
+        @endif
+      </div>
+    </div>
+
+      <div class="ui relaxed divided list" style="height: 350px;overflow: auto;">
+        <table class="ui celled table" style="margin-top: 30px;">
+
+          <thead>
+            <tr>
+              <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ID</font></font></th>
+              <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">시리얼번호</font></font></th>
+              <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">보드명</font></font></th>
+              <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">프로젝트명</font></font></th>
+              <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">생산일</font></font></th>
+              <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">출하일</font></font></th>
+              <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">편성</font></font></th>
+              <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">불량</font></font></th>
+              <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">불량내용</font></font></th>
+              <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">타입</font></font></th>
+              <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">코팅두께</font></font></th>
+              <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">코팅육안검사</font></font></th>
+              <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">인수자</font></font></th>
+              <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">인계자</font></font></th>
+              <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">메모</font></font></th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach ($products_alls as $products_all)
+            <tr>
+              <td>{{$products_all->id}}</td>
+              @if($products_all->updated_at == date("Y-m-d H:i:s"))
+               <td style="background-color:red; color: white">{{$products_all->serial_name}}</td>
+              @else
+              <td>{{$products_all->serial_name}}</td>
+              @endif
+              <td><a href="/boardnames/{{ $products_all->id }}/edit">{{$products_all->board_name}}</a></td>
+              <td>{{$products_all->shipment_daily}}</td>
+              <td>{{$products_all->shipment}}</td>
+              <td>{{$products_all->product_date}}</td>
+              <td>{{$products_all->set_set}}</td>
+              <td>{{$products_all->faulty}}</td>
+              <td>{{$products_all->remarks}}</td>
+              <td>{{$products_all->type}}</td>
+              <td>{{$products_all->coting_t}}</td>
+              <td>{{$products_all->coting_inp}}</td>
+              <td>{{$products_all->ship_user}}</td>
+              <td>{{$products_all->receiver}}</td>
+              <td>{{isset($products_all->note) ? mb_substr($products_all->note, 0,10) : ''}}</td>
+            </tr>
+            @endforeach
+
+
+
+          </tbody>
+        </table>
+    </div>
+  </div>
+
+
+
+
+{{-- 에러표시 --}}
   @if($errors->any())
   <div class="ui pink inverted segment">
 
