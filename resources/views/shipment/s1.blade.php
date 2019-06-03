@@ -91,12 +91,29 @@
   </div>
 
 
-
+<div class="ui four column grid">
+  <div class="row">
+  <div class="wide column" style="background-color: blue">11</div>
+  <div class="wide column" style="background-color: yellow">22</div>
+  <div class="wide column" style="background-color: tomato">33</div>
+  </div>
+</div>
 
 {{-- 최근입력 시리얼번호 --}}
 <div class="ui existing segment">
   <div class="ui attached top label">
-    <span class="title">최근 입력한 출하 내역    
+    <span class="title">최근 입력한 출하 내역  &nbsp;&nbsp;
+
+      {{-- 시리얼번호 검색 --}}
+      <form method="post" action="/product/search/">
+        @csrf      
+        <div class="ui action left icon input">
+          <i class="search icon"></i>
+          <input type="text" placeholder="Search...">
+          <div class="ui teal button"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">검색</font></font></div>
+      </form>
+        </div>
+
       {{-- 페이지네이션 --}}
       <div class="ui right floated pagination menu">
         @if($products_alls->count())
@@ -134,7 +151,7 @@
               <td>{{$products_all->id}}</td>
               @if($products_all->updated_at == date("Y-m-d H:i:s"))
                <td style="background-color:#007CDF; color: white">{{$products_all->serial_name}}</td>
-               <td style="background-color:#007CDF; color: white"><a href="/boardnames/{{ $products_all->id }}/edit">{{$products_all->board_name}}</a></td>
+               <td style="background-color:#007CDF; color: white"><a href="/shipment/{{ $products_all->id }}/edit">{{$products_all->board_name}}</a></td>
                <td style="background-color:#007CDF; color: white">{{$products_all->shipment_daily}}</td>
                <td style="background-color:#007CDF; color: white">{{$products_all->product_date}}</td>
                <td style="background-color:#007CDF; color: white">{{$products_all->shipment}}</td>
@@ -156,7 +173,7 @@
 
               @else
               <td>{{$products_all->serial_name}}</td>
-              <td><a href="/boardnames/{{ $products_all->id }}/edit">{{$products_all->board_name}}</a></td>
+              <td><a href="/shipment/{{ $products_all->id }}/edit">{{$products_all->board_name}}</a></td>
               <td>{{$products_all->shipment_daily}}</td>
               <td>{{$products_all->product_date}}</td>
               <td>{{$products_all->shipment}}</td>

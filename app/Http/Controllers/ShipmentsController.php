@@ -98,7 +98,7 @@ class ShipmentsController extends Controller
      */
     public function edit($id)
     {
-        //
+        dd($id);
     }
 
     /**
@@ -138,6 +138,7 @@ class ShipmentsController extends Controller
        $product->ship_user = null;
        $product->save();
 
+       //flash('정상적으로 처리 되었습니다.');
        return back();
     }
 }
