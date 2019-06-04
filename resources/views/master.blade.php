@@ -15,6 +15,29 @@
   <script src="/semantic/semantic.js"></script>
 </head>
 <style media="screen">
+
+/* unvisited link */
+a:link {
+  color: #0861E3;
+  font-weight: bold;
+}
+
+/* visited link */
+a:visited {
+  color: black;
+}
+
+/* mouse over link */
+a:hover {
+  color: black;
+}
+
+/* selected link */
+a:active {
+  color: black;
+}
+
+
   body{
     padding: 1rem;
   }

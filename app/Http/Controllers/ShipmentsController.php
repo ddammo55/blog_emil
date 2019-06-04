@@ -13,15 +13,24 @@ class ShipmentsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
 
-
-        $products = \App\Product::where('con', 0)->get(); // 제품 시리얼번호 con=0인것만 가져오기
-        $products_alls = \App\Product::latest('updated_at')->paginate(50); //여기서는 shipment순으로 가져온다.
+        if(request('serial_name')){
+                    $products = \App\Product::where('con', 0)->latest('updated_at')->get(); // 제품 시리얼번호 con=0인것만 가져오기
+        $products_alls = \App\Product::where('serial_name', request('serial_name'))->where('con', 1)->paginate(1); //여기서는 shipment순으로 가져온다.
         $projects = \App\Project::all(); // 프로젝트 명
         //$products = ["딸기","바나나","파인애플"];
         return view('shipment.s1',compact('products','projects','products_alls'));
+        }else{
+
+
+        $products = \App\Product::where('con', 0)->latest('updated_at')->get(); // 제품 시리얼번호 con=0인것만 가져오기
+        $products_alls = \App\Product::where('con', 1)->latest('updated_at')->paginate(50); //여기서는 shipment순으로 가져온다.
+        $projects = \App\Project::all(); // 프로젝트 명
+        //$products = ["딸기","바나나","파인애플"];
+        return view('shipment.s1',compact('products','projects','products_alls'));
+    }
     }
 
     /**
@@ -72,8 +81,8 @@ class ShipmentsController extends Controller
         
     }
 
-        flash('입력이 정상적으로 처리되었습니다.');
-
+        //flash('입력이 정상적으로 처리되었습니다.');
+         echo "<script>alert(\"입력이 정상적으로 처리되었습니다.\");</script>";
         //만약에 결과보기를 클릭하면
         return back();
 
@@ -140,5 +149,16 @@ class ShipmentsController extends Controller
 
        //flash('정상적으로 처리 되었습니다.');
        return back();
+    }
+
+    public function search(Request $request)
+    {
+        //dd(request()->all());
+        $products = \App\Product::where('con', 0)->latest('updated_at')->get(); // 제품 시리얼번호 con=0인것만 가져오기
+        $products_alls = \App\Product::where('serial_name', request('serial_name'))->paginate(1); //여기서는 shipment순으로 가져온다.
+        $projects = \App\Project::all(); // 프로젝트 명
+        //$products = ["딸기","바나나","파인애플"];
+
+        return view('shipment.s1',compact('products','projects','products_alls'));
     }
 }

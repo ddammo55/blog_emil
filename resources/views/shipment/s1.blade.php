@@ -91,39 +91,42 @@
   </div>
 
 
-<div class="ui four column grid">
-  <div class="row">
-  <div class="wide column" style="background-color: blue">11</div>
-  <div class="wide column" style="background-color: yellow">22</div>
-  <div class="wide column" style="background-color: tomato">33</div>
-  </div>
-</div>
+
 
 {{-- 최근입력 시리얼번호 --}}
-<div class="ui existing segment">
-  <div class="ui attached top label">
-    <span class="title">최근 입력한 출하 내역  &nbsp;&nbsp;
 
-      {{-- 시리얼번호 검색 --}}
-      <form method="post" action="/product/search/">
-        @csrf      
-        <div class="ui action left icon input">
-          <i class="search icon"></i>
-          <input type="text" placeholder="Search...">
-          <div class="ui teal button"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">검색</font></font></div>
-      </form>
+  <div class="ui segment">
+    <div class="ui vertically divided grid">
+      <div class="three column row" style="background-color:#1B1C1D">
+        <div class="two wide column">
+          <h4 style="color: white">최근 출하 내역</h4>
         </div>
-
-      {{-- 페이지네이션 --}}
-      <div class="ui right floated pagination menu">
-        @if($products_alls->count())
-        {{ $products_alls->links() }}
-        @endif
+        <div class="three wide column">
+          {{-- 시리얼번호 검색 --}}
+          <form method="get" action="/shipment" id="frm2">
+            @csrf      
+            <div class="ui action left icon input">
+              <i class="search icon"></i>
+              <input type="text" name="serial_name" placeholder="시리얼 번호">
+              <div class="ui teal button" onclick="document.getElementById('frm2').submit();"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">검색</font></font></div>
+            </form>
+          </div>
+        </div>
+        <div class="eleven wide column">
+          {{-- 페이지네이션 --}}
+            @if($products_alls->count())
+          <div class="ui right floated pagination menu">
+            {{ $products_alls->links() }}
+          </div>
+            @endif
+        </div>
       </div>
     </div>
+  </div>
+
 
       <div class="ui relaxed divided list" style="height: 350px;overflow: auto;">
-        <table class="ui selectable celled table" style="margin-top: 30px;">
+        <table class="ui selectable celled table" style="margin-top: 0px;">
 
           <thead>
             <tr>
@@ -142,36 +145,17 @@
               <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">인수자</font></font></th>
               <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">인계자</font></font></th>
               <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">메모</font></font></th>
-              <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">con</font></font></th>
+              <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">취소</font></font></th>
             </tr>
           </thead>
           <tbody>
             @foreach ($products_alls as $products_all)
-            <tr>
-              <td>{{$products_all->id}}</td>
-              @if($products_all->updated_at == date("Y-m-d H:i:s"))
-               <td style="background-color:#007CDF; color: white">{{$products_all->serial_name}}</td>
-               <td style="background-color:#007CDF; color: white"><a href="/shipment/{{ $products_all->id }}/edit">{{$products_all->board_name}}</a></td>
-               <td style="background-color:#007CDF; color: white">{{$products_all->shipment_daily}}</td>
-               <td style="background-color:#007CDF; color: white">{{$products_all->product_date}}</td>
-               <td style="background-color:#007CDF; color: white">{{$products_all->shipment}}</td>
-               <td style="background-color:#007CDF; color: white">{{$products_all->set_set}}</td>
-               <td style="background-color:#007CDF; color: white">{{$products_all->faulty}}</td>
-               <td style="background-color:#007CDF; color: white">{{$products_all->remarks}}</td>
-               <td style="background-color:#007CDF; color: white">{{$products_all->type}}</td>
-               <td style="background-color:#007CDF; color: white">{{$products_all->coting_t}}</td>
-               <td style="background-color:#007CDF; color: white">{{$products_all->coting_inp}}</td>
-               <td style="background-color:#007CDF; color: white">{{$products_all->ship_user}}</td>
-               <td style="background-color:#007CDF; color: white">{{$products_all->receiver}}</td>
-               <td style="background-color:#007CDF; color: white">{{isset($products_all->note) ? mb_substr($products_all->note, 0,10) : ''}}</td>
-               <td>
-                <form method="post" action="/product/con/{{ $products_all->id }}">
-                  @csrf
-                  <input type="submit" value="지우기">  
-                </form>            
-              </td>
-
+            @if(substr($products_all->updated_at,0,-3) == date("Y-m-d H:i"))
+            <tr style="background-color: #4AABE3">
               @else
+              <tr>
+                @endif
+              <td>{{$products_all->id}}</td>
               <td>{{$products_all->serial_name}}</td>
               <td><a href="/shipment/{{ $products_all->id }}/edit">{{$products_all->board_name}}</a></td>
               <td>{{$products_all->shipment_daily}}</td>
@@ -192,8 +176,6 @@
                   <input type="submit" value="지우기">  
                 </form>            
               </td>
-
-              @endif
 
             </tr>
             @endforeach
@@ -219,9 +201,6 @@
     </ul>
   </div>  
   @endif
-
-
-
 
 
 

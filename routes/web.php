@@ -53,5 +53,6 @@ Route::resource('/boardnames','BoardnamesController')->middleware('auth');
 #|--------------------------------------------------------------------------
 Route::resource('/shipment','ShipmentsController')->middleware('auth');
 Route::post('product/con/{id}', 'ShipmentsController@con');
+// Route::post('product/search', 'ShipmentsController@search');
 
 
