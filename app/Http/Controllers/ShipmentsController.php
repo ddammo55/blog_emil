@@ -22,7 +22,7 @@ class ShipmentsController extends Controller
         $projects = \App\Project::all(); // 프로젝트 명
         //$products = ["딸기","바나나","파인애플"];
         return view('shipment.s1',compact('products','projects','products_alls'));
-        }else{
+    }else{
 
 
         $products = \App\Product::where('con', 0)->latest('updated_at')->get(); // 제품 시리얼번호 con=0인것만 가져오기
@@ -107,7 +107,11 @@ class ShipmentsController extends Controller
      */
     public function edit($id)
     {
-        dd($id);
+        $products = \App\Product::where('id',337)->get();
+
+        $projects_names = \App\Project::all(); // 프로젝트 명
+        //dd($product);
+      return view('shipment.edit', compact('products','projects_names'));
     }
 
     /**
@@ -117,9 +121,10 @@ class ShipmentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Product $product)
     {
-        //
+        request('project_name');
+        dd($product);
     }
 
     /**
@@ -151,14 +156,4 @@ class ShipmentsController extends Controller
        return back();
     }
 
-    public function search(Request $request)
-    {
-        //dd(request()->all());
-        $products = \App\Product::where('con', 0)->latest('updated_at')->get(); // 제품 시리얼번호 con=0인것만 가져오기
-        $products_alls = \App\Product::where('serial_name', request('serial_name'))->paginate(1); //여기서는 shipment순으로 가져온다.
-        $projects = \App\Project::all(); // 프로젝트 명
-        //$products = ["딸기","바나나","파인애플"];
-
-        return view('shipment.s1',compact('products','projects','products_alls'));
-    }
 }

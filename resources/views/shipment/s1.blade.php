@@ -151,13 +151,13 @@
           <tbody>
             @foreach ($products_alls as $products_all)
             @if(substr($products_all->updated_at,0,-3) == date("Y-m-d H:i"))
-            <tr style="background-color: #4AABE3">
+            <tr style="background-color: #0EC7B9">
               @else
               <tr>
                 @endif
               <td>{{$products_all->id}}</td>
-              <td>{{$products_all->serial_name}}</td>
-              <td><a href="/shipment/{{ $products_all->id }}/edit">{{$products_all->board_name}}</a></td>
+              <td><a href="/product/{{ $products_all->id }}/edit">{{$products_all->serial_name}}</a></td>
+              <td>{{$products_all->board_name}}</td>
               <td>{{$products_all->shipment_daily}}</td>
               <td>{{$products_all->product_date}}</td>
               <td>{{$products_all->shipment}}</td>

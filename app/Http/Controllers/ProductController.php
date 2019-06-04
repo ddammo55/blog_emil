@@ -236,7 +236,9 @@ public function show(Product $product)
      */
     public function edit(Product $product)
     {
-        //
+
+        $projects_names = \App\Project::all(); // 프로젝트 명 
+       return view('shipment.edit', compact('product','projects_names'));
     }
 
     /**
@@ -248,7 +250,12 @@ public function show(Product $product)
      */
     public function update(Request $request, Product $product)
     {
-        //
+        //dd($product);
+       $product->update([
+        'shipment_daily' => request('project_name'),
+       ]);
+       flash('입력이 정상적으로 처리되었습니다.');
+        return redirect('/shipment');
     }
 
     /**
