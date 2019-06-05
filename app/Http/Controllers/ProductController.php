@@ -252,7 +252,17 @@ public function show(Product $product)
     {
         //dd($product);
        $product->update([
-        'shipment_daily' => request('project_name'),
+        'shipment_daily' => request('shipment_daily'),
+        'shipment' => request('shipment'),
+        'set_set' => request('set_set'),
+        'faulty' => request('faulty'),
+        'type' => request('type'),
+        'receiver_team' => request('receiver_team'),
+        'receiver' => request('receiver'),
+        'coting_t' => request('coting_t'),
+        'coting_inp' => request('coting_inp'),
+        'note' => request('note'),
+     
        ]);
        flash('입력이 정상적으로 처리되었습니다.');
         return redirect('/shipment');

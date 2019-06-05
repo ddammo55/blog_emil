@@ -26,7 +26,7 @@
           
         <div class="field">
           <div class="ui selection dropdown">
-            <input type="hidden" name="project" class="input {{ $errors->has('project') ? 'is-danger' : '' }}" value="{{ old('project') }}" required>
+            <input type="hidden" name="project"  class="input {{ $errors->has('project') ? 'is-danger' : '' }}" value="{{ old('project') }}" required>
             <i class="dropdown icon"></i>
             <div class="default text" style="color: black">프로젝트 명</div>
             <div class="menu">
@@ -48,14 +48,32 @@
 
         <br> 
 
-        <div class="ui form">
-          <div class="field">
-            <label>인수자</label>
-            <input type="text" name="receiver" name="project" class="input {{ $errors->has('receiver') ? 'is-danger' : '' }}" value="{{ old('receiver') }}" required>
+
+        <div class="ui segment">
+          <div class="ui two column very relaxed grid">
+            <div class="column">
+             <div class="ui form">
+              <div class="field">
+                <label>인수팀</label>
+                <input type="text"  name="receiver_team" class="input {{ $errors->has('receiver_team') ? 'is-danger' : '' }}" value="{{ old('receiver_team') }}" required>
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="ui form">
+              <div class="field">
+                <label>인수자</label>
+                <input type="text" name="receiver"  class="input {{ $errors->has('receiver') ? 'is-danger' : '' }}" value="{{ old('receiver') }}" required>
+              </div>
+            </div>
           </div>
         </div>
+        <div class="ui vertical divider"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          과
+        </font></font></div>
+      </div>
 
-        <br> 
+
 
         <div class="ui form">
           <div class="field">

@@ -2,6 +2,8 @@
 
 @section('content')
 
+
+
 <div class="ui segment">
 	<div class="ui column very relaxed grid">
 		<div class="wide column">
@@ -11,10 +13,18 @@
 				@csrf
 				@method('PATCH')
 
+
+
+ 
+
+<div class="ui segment">
+  <div class="ui two column very relaxed grid">
+    <div class="column">
+
+    	{{--프로젝트--}}
         <div class="field">
-        	<label>프로젝트</label>
           <div class="ui selection dropdown">
-            <input type="hidden" name="project" class="input {{ $errors->has('project') ? 'is-danger' : '' }}" value="{{ $product->shipment_daily }}" required>
+            <input type="hidden" name="shipment_daily" class="input {{ $errors->has('shipment_daily') ? 'is-danger' : '' }}" value="{{ $product->shipment_daily }}" required>
             <i class="dropdown icon"></i>
             <div class="default text" style="color: black">프로젝트 명</div>
             <div class="menu">
@@ -24,21 +34,135 @@
             </div>
           </div>
         </div>
+        {{--프로젝트--}}
 
-				<div class="field">
-				<label>출하일</label>
-					<input class="input {{ $errors->has('project_name') ? 'is-danger' : '' }}" type="date" name="project_name" value="{{ $product->shipment }}" required>
-				</div>
+        {{--출하일--}}
+        <div class="field">
+        	<label>출하일</label>
+        	<input class="input {{ $errors->has('project_name') ? 'is-danger' : '' }}" type="date" name="shipment" value="{{ $product->shipment }}" required>
+        </div>
+        {{--출하일--}}
 
-				<div class="field">
-				<label>편성</label>
-					<input class="input {{ $errors->has('project_name') ? 'is-danger' : '' }}" type="text" name="project_name" value="{{ $product->set_set }}">
-				</div>
+         {{--편성--}}
+        <div class="field">
+        	<label>편성</label>
+        	<input class="input {{ $errors->has('project_name') ? 'is-danger' : '' }}" type="text" name="set_set" value="{{ $product->set_set }}">
+        </div>
+         {{--편성--}}
 
-				<div class="field">
-				<label>불량</label>
-					<input class="input {{ $errors->has('project_name') ? 'is-danger' : '' }}" type="text" name="project_name" value="{{ $product->faulty }}" required>
-				</div>		
+         {{--불량--}}
+         <div class="field">
+         	<label>불량</label>
+         	<input class="input {{ $errors->has('project_name') ? 'is-danger' : '' }}" type="number" name="faulty" value="{{ $product->faulty }}" required>
+         </div>
+         {{--불량--}}
+
+         {{--타입--}}
+         <div class="field">
+         	<label>타입</label>
+         	<input  type="text" name="type" value="{{ $product->type }}" required>
+         </div>
+         {{--타입--}}
+
+         {{--인수팀--}}
+         <div class="field">
+         	<label>인수팀</label>
+         	<input  type="text" name="receiver_team" value="{{ $product->receiver_team }}" required>
+         </div>
+         {{--인수팀--}}
+
+         {{--인수자--}}
+         <div class="field">
+         	<label>인수자</label>
+         	<input  type="text" name="receiver" value="{{ $product->receiver }}" required>
+         </div>
+         {{--인수자--}}
+
+    </div>
+    <div class="column">
+
+    	{{--TOP부품수량--}}
+    	<div class="field">
+    		<label>TOP_부품수량</label>
+    		<div class="ui disabled input">
+    			<input  type="number" name="aoi_top_part_num" value="{{ $product->aoi_top_part_num }}" required>
+    		</div>
+    	</div>
+    	{{--TOP부품수량--}}
+
+    	{{--BOT부품수량--}}
+    	<div class="field">
+    		<label>BOT_부품수량</label>
+    		<div class="ui disabled input">
+    			<input  type="number" name="aoi_bot_part_num" value="{{ $product->aoi_bot_part_num }}" required>
+    		</div>
+    	</div>
+    	{{--BOT부품수량--}}
+
+    	{{--코팅두께--}}
+    	<div class="field">
+    		<label>코팅두께</label>
+    		<input  type="number" name="coting_t" value="{{ $product->coting_t }}" required>
+    	</div>
+    	{{--코팅두께--}}	
+
+    	{{--코팅육안검사--}}	
+    	<div class="field">
+    		<label>코팅육안검사</label>
+    		<input  type="text" name="coting_inp" value="{{ $product->coting_inp }}" required>
+    	</div>
+    	{{--코팅육안검사--}}	
+
+    	{{--인계자--}}	
+    	<div class="field">
+    		<label>인계자</label>
+    		<input  type="text" name="ship_user" value="{{ $product->ship_user }}" required>
+    	</div>
+    	{{--인계자--}}
+
+    	{{--생성한 날짜--}}
+    	<div class="field">
+    		<label>생성한 날짜</label>
+    		<div class="ui disabled input">
+    			<input  type="text" name="created_at" value="{{ $product->created_at }}" required>
+    		</div>
+    	</div>
+    	{{--생성한 날짜--}}
+
+    	{{--수정한 날짜--}}
+    	<div class="field">
+    		<label>수정한 날짜</label>
+    		<div class="ui disabled input">
+    			<input  type="text" name="updated_at" value="{{ $product->updated_at }}" required>
+    		</div>
+    	</div>
+    	{{--수정한 날짜--}}
+
+    </div>
+  </div>
+  <div class="ui vertical divider"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    과
+  </font></font></div>
+</div>
+
+<label>메모</label>
+<div class="ui segment">
+	<input  type="text" name="note" value="{{ $product->note }}" required>
+</div>
+
+  
+
+
+
+
+
+	
+				
+
+
+	
+
+			
 
 
 
@@ -46,10 +170,10 @@
 
 			<br>
 			<button class="ui secondary button" onclick="document.getElementById('frm').submit();"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-				프로젝트명 수정
+				출하내역 수정
 			</font></font></button>
 
-			<button class="ui pink button"  onclick="button_event();">프로젝트 삭제</button>  
+			<!-- <button class="ui pink button"  onclick="button_event();">출하내역 삭제</button>   -->
 
 			@if($errors->any())
 			<div class="ui pink inverted segment">
