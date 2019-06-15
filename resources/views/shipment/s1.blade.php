@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1 class="ui header"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">출하 내역 관리</font></font></h1>
+<h1 class="ui header"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">출하 내역 관리 &nbsp;<i class="circular inverted small comment alternate outline icon" onclick="button_event()"></i></font></font></h1>
 
 <div class="ui segment">
   <div class="ui three column very relaxed grid">
@@ -130,7 +130,7 @@
             </form>
           </div>
         </div>
-        <div class="eleven wide column">
+         <div class="eleven wide column">
           {{-- 페이지네이션 --}}
             @if($products_alls->count())
           <div class="ui right floated pagination menu">
@@ -220,8 +220,45 @@
   </div>  
   @endif
 
+<!-- 출하내역 설명 모달 -->
+<div id="modal1" class="ui long test modal scrolling transition hidden">
+    <div class="header">
+      출하내역 관리 도움말
+    </div>
+    <div class="image content">
+
+      <div class="description">
+        <div class="ui header">설명서</div>
+        <pre>
+          내용
+        </pre>
+
+      </div>
+    </div>
+    <div class="actions">
+      <div class="ui primary approve button">
+        닫기
+        <i class="x icon icon"></i>
+      </div>
+    </div>
+  </div>
 
 
+<script type="text/javascript">
+ function button_event(){
+$('#modal1')
+  .modal('show')
+;
+}
+</script>
+<!-- 설명 모달 -->
+
+
+
+
+
+
+<!-- 셀렉트박스 자바스크립트 -->
 <script type="text/javascript">
 
   function move(fbox, tbox) {

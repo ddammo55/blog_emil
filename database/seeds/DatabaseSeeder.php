@@ -29,6 +29,9 @@ class DatabaseSeeder extends Seeder
         App\Boardname::truncate();
         $this->call(BoardnamesTableSeeder::class);
 
+        App\Pba::truncate();
+        $this->call(PbasTableSeeder::class);
+
     	if (! $sqlite) {
     		DB::statement('SET FOREIGN_KEY_CHECKS=1');
     	}

@@ -20,7 +20,11 @@
     			<input class="input {{ $errors->has('bot_num') ? 'is-danger' : '' }}" type="number" name="bot_num" value="{{ old('bot_num') }}" placeholder="BOT 부품수량" required>
     		</div>
 
-    		<div class="field">
+            <div class="field">
+                <input class="input {{ $errors->has('man_hour') ? 'is-danger' : '' }}" type="number" name="man_hour" value="{{ old('man_hour') }}" placeholder="공수">
+            </div>
+
+            <div class="field">
               <div class="ui selection dropdown">
                 <input class="input {{ $errors->has('method') ? 'is-danger' : '' }}" type="hidden" name="method" value="{{ old('method') }}" placeholder="방법" required>
                 <i class="dropdown icon"></i>
@@ -34,11 +38,43 @@
                   <div class="item">조립</div>
                 </div>
               </div>
+            </div>
+
+            <div class="field">
+              <div class="ui selection dropdown">
+                <input class="input {{ $errors->has('top_method') ? 'is-danger' : '' }}" type="hidden" name="top_method" value="{{ old('top_method') }}" placeholder="방법" required>
+                <i class="dropdown icon"></i>
+                <div class="default text" style="color: black">TOP소재</div>
+                <div class="menu">
+                  <div class="item">크림솔더</div>
+                  <div class="item">본드</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="ui selection dropdown">
+                <input class="input {{ $errors->has('bot_method') ? 'is-danger' : '' }}" type="hidden" name="bot_method" value="{{ old('bot_method') }}" placeholder="방법" required>
+                <i class="dropdown icon"></i>
+                <div class="default text" style="color: black">BOT소재</div>
+                <div class="menu">
+                  <div class="item">본드</div>
+                  <div class="item">크림솔더</div>
+                </div>
+              </div>
     		</div>
 
-    		<div class="field">
-    			<input class="input {{ $errors->has('note') ? 'is-danger' : '' }}" type="text" name="note" value="{{ old('note') }}" placeholder="메모">
-    		</div>
+            <div class="field">
+                <input class="input {{ $errors->has('metal_mask_no') ? 'is-danger' : '' }}" type="number" name="metal_mask_no" value="{{ old('metal_mask_no') }}" placeholder="메탈마스크 넘버" required>
+            </div>
+
+            <div class="field">
+                <input class="input {{ $errors->has('dwg_no') ? 'is-danger' : '' }}" type="text" name="dwg_no" value="{{ old('dwg_no') }}" placeholder="도면번호" required>
+            </div>
+
+            <div class="field">
+                <input class="input {{ $errors->has('note') ? 'is-danger' : '' }}" type="text" name="note" value="{{ old('note') }}" placeholder="메모">
+            </div>
 
 
 
@@ -67,7 +103,12 @@
                     <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ID</font></font></th>
                     <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">보드명</font></font></th>
     				<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">TOP 부품수량</font></font></th>
-    				<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">BOT 부품수량</font></font></th>
+                    <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">BOT 부품수량</font></font></th>
+                    <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">공수(분)</font></font></th>
+                    <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">TOP소재</font></font></th>
+                    <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">BOT소재</font></font></th>
+                    <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">메탈마스크넘버</font></font></th>
+    				<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">도면넘버</font></font></th>
     				<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">방법</font></font></th>
     				<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">메모</font></font></th>
     			</tr>
@@ -78,7 +119,12 @@
     					<td>{!! $boardname->id!!}</td>
     					<td><a href="/boardnames/{{ $boardname->id }}/edit">{{$boardname->boardname}}</a></td>
     					<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{!! $boardname->top_num!!}</font></font></td>
-    					<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{!! $boardname->bot_num!!}</font></font></td>
+                        <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{!! $boardname->bot_num!!}</font></font></td>
+    					<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{!! $boardname->man_hour!!}</font></font></td>
+                        <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{!! $boardname->top_method!!}</font></font></td>
+                        <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{!! $boardname->bot_method!!}</font></font></td>
+                        <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{!! $boardname->metal_mask_no!!}</font></font></td>
+                        <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{!! $boardname->dwg_no!!}</font></font></td>
     					<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{!! $boardname->method!!}</font></font></td>
     					<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{!! $boardname->note!!}</font></font></td>
     				</tr>

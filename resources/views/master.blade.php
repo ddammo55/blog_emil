@@ -121,7 +121,7 @@ a:active {
   <div class="header">제조 영상</div>
   <div class="menu">
 
-    <a class="item" href="/introduction/integrations.html">
+    <a class="item" href="/pbas">
       PBA
     </a>
 
@@ -157,7 +157,7 @@ a:active {
     </a>
 
     <a class="item" href="/projects/create">
-      출하내역 관리
+      인수자 관리
     </a>
 
   </div>

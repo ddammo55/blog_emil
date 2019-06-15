@@ -19,9 +19,11 @@ class ProductController extends Controller
 
     public function product_create()
     {
+        //[NEW시리얼번호구현]
         //시리얼 번호 최근 컬럼을 가지고 온다.
         $products_first = \App\Product::latest('id')->first('serial_name');
 
+        //보드명이 널이거나 수량이 없으면 또는 200장이 초과하면
         if(request('board_name') == null || request('quantity') == 0 || request('quantity') == 201){
              echo "<script>alert(\"보드명과 수량을 확인하여주세요.\");</script>";
              echo "<script> history.back()</script>";
@@ -34,20 +36,66 @@ class ProductController extends Controller
         //수량
         $quantity = request()->quantity;
         
-        //숫자만 남긴다. 0005
-        $serial_start_no_int=substr($products_first->serial_name,3,4);
-
-        //숫자 남긴거 +1
-        $ttr = sprintf("%04d",$serial_start_no_int+1);
+        //19F
+        $serial_year_month=substr($products_first->serial_name,0,3);
         
-        //앞에만 남긴다. 19A
-        $serial_start_no_start=substr($products_first->serial_name,0,3);
+
+        // 만약에 해당월이 없으면 19F 가 있으면 번호를 이으고 없으면 0000으로 시작 
+        if($serial_year_month == '19F'){
+            //숫자만 남긴다. 0005
+             $serial_start_no_int=substr($products_first->serial_name,3,4);
+             //숫자 남긴거 +1
+             $ttr = sprintf("%04d",$serial_start_no_int+1);
+        }else{
+             $serial_start_no_int=0000;   
+             $ttr = sprintf("%04d",$serial_start_no_int+1);
+        }
+
+        //앞에만 남긴다. 19A   [19]
+        $serial_start_no_start= date('y'); //해당년도 뒤에 두자리만 2019 = 19
+        //[2019.06.15]$serial_start_no_start=substr($products_first->serial_name,0,2);
+
+        //월 조건문
+        if(date('m') == 1){
+            $month = 'A';
+        }else if(date('m') == 2){
+            $month = 'B';
+        }else if(date('m') == 3){
+            $month = 'C';
+        }else if(date('m') == 4){
+            $month = 'D';
+        }else if(date('m') == 5){
+            $month = 'E';
+        }else if(date('m') == 6){
+            $month = 'F';        
+        }else if(date('m') == 7){
+            $month = 'G';        
+        }else if(date('m') == 8){
+            $month = 'H';        
+        }else if(date('m') == 9){
+            $month = 'I';        
+        }else if(date('m') == 10){
+            $month = 'J';        
+        }else if(date('m') == 11){
+            $month = 'K';        
+        }else if(date('m') == 12){
+            $month = 'L';        
+        }
+
+        //19F 완성
+        $serial_start_no_start = $serial_start_no_start .$month;
+        //dd($serial_start_no_start);
+        // $month = 'F';
+
+        // $serial_start_no_start = sprintf("%04d",$serial_start_no_start);
+
+        // dd($serial_start_no_start);
 
         //***[완성]*** 11a0011
         $serial_start_no = $serial_start_no_start.$ttr;
 
 
-        //현재숫자와 보드작업수량을 합친다. 53
+        //현재숫자와 보드작업수량을 합친다. 53 + 50
         $sum_serial_number = sprintf("%04d",$serial_start_no_int) + sprintf("%04d",$quantity);
 
         //0053
@@ -144,6 +192,7 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
+        //[구형 시리얼번호]
         //시리얼 번호 받기   
        $serial_start_no=$request['serial_start_no'];
        $serial_end_no=$request['serial_end_no'];

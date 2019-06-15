@@ -20,34 +20,34 @@ class CreateProductsTable extends Migration
             $table->date('product_date');             #생산일
             $table->date('shipment')->nullable();                 #출하일
             $table->string('user_id')->nullable();              #유저아이디
-            $table->integer('aoi_top_part_num')->default(0);               #AOI_top_부품수량
-            $table->integer('aoi_top_df_num')->default(0);                 #AOI_top_불량수량
-            $table->integer('aoi_top_df_01')->default(0);                  #미삽
-            $table->integer('aoi_top_df_02')->default(0);                  #미납
-            $table->integer('aoi_top_df_03')->default(0);                  #쇼트
-            $table->integer('aoi_top_df_04')->default(0);                  #역삽
-            $table->integer('aoi_top_df_05')->default(0);                  #오삽
-            $table->integer('aoi_top_df_06')->default(0);                  #리드뜸
-            $table->integer('aoi_top_df_07')->default(0);                  #리드부식
-            $table->integer('aoi_top_df_08')->default(0);                  #모로섬
-            $table->integer('aoi_top_df_09')->default(0);                  #뒤집힘
-            $table->integer('aoi_top_df_10')->default(0);                  #틀어짐
-            $table->integer('aoi_top_df_11')->default(0);                  #냉땜
-            $table->integer('aoi_top_df_12')->default(0);                  #크랙
-            $table->integer('aoi_bot_part_num')->default(0);               #AOI_BOT_부품수량
-            $table->integer('aoi_bot_df_num')->default(0);                 #AOI_BOT_불량수량
-            $table->integer('aoi_bot_df_01')->default(0);                  #미삽
-            $table->integer('aoi_bot_df_02')->default(0);                  #미납
-            $table->integer('aoi_bot_df_03')->default(0);                  #쇼트
-            $table->integer('aoi_bot_df_04')->default(0);                  #역삽
-            $table->integer('aoi_bot_df_05')->default(0);                  #오삽
-            $table->integer('aoi_bot_df_06')->default(0);                  #리드뜸
-            $table->integer('aoi_bot_df_07')->default(0);                  #리드부식
-            $table->integer('aoi_bot_df_08')->default(0);                  #모로섬
-            $table->integer('aoi_bot_df_09')->default(0);                  #뒤집힘
-            $table->integer('aoi_bot_df_10')->default(0);                  #틀어짐
-            $table->integer('aoi_bot_df_11')->default(0);                  #냉땜    
-            $table->integer('aoi_bot_df_12')->default(0);                  #크랙
+            $table->integer('aoi_top_part_num')->default(0)->nullable();               #AOI_top_부품수량
+            $table->integer('aoi_top_df_num')->default(0)->nullable();                 #AOI_top_불량수량
+            $table->integer('aoi_top_df_01')->default(0)->nullable();                  #미삽
+            $table->integer('aoi_top_df_02')->default(0)->nullable();                  #미납
+            $table->integer('aoi_top_df_03')->default(0)->nullable();                  #쇼트
+            $table->integer('aoi_top_df_04')->default(0)->nullable();                  #역삽
+            $table->integer('aoi_top_df_05')->default(0)->nullable();                  #오삽
+            $table->integer('aoi_top_df_06')->default(0)->nullable();                  #리드뜸
+            $table->integer('aoi_top_df_07')->default(0)->nullable();                  #리드부식
+            $table->integer('aoi_top_df_08')->default(0)->nullable();                  #모로섬
+            $table->integer('aoi_top_df_09')->default(0)->nullable();                  #뒤집힘
+            $table->integer('aoi_top_df_10')->default(0)->nullable();                  #틀어짐
+            $table->integer('aoi_top_df_11')->default(0)->nullable();                  #냉땜
+            $table->integer('aoi_top_df_12')->default(0)->nullable();                  #크랙
+            $table->integer('aoi_bot_part_num')->default(0)->nullable();               #AOI_BOT_부품수량
+            $table->integer('aoi_bot_df_num')->default(0)->nullable();                 #AOI_BOT_불량수량
+            $table->integer('aoi_bot_df_01')->default(0)->nullable();                  #미삽
+            $table->integer('aoi_bot_df_02')->default(0)->nullable();                  #미납
+            $table->integer('aoi_bot_df_03')->default(0)->nullable();                  #쇼트
+            $table->integer('aoi_bot_df_04')->default(0)->nullable();                  #역삽
+            $table->integer('aoi_bot_df_05')->default(0)->nullable();                  #오삽
+            $table->integer('aoi_bot_df_06')->default(0)->nullable();                  #리드뜸
+            $table->integer('aoi_bot_df_07')->default(0)->nullable();                  #리드부식
+            $table->integer('aoi_bot_df_08')->default(0)->nullable();                  #모로섬
+            $table->integer('aoi_bot_df_09')->default(0)->nullable();                  #뒤집힘
+            $table->integer('aoi_bot_df_10')->default(0)->nullable();                  #틀어짐
+            $table->integer('aoi_bot_df_11')->default(0)->nullable();                  #냉땜    
+            $table->integer('aoi_bot_df_12')->default(0)->nullable();                  #크랙
             $table->string('element')->nullable();                     #관리소자
             $table->date('element_date')->nullable();             #관리입고일
             $table->integer('quantity')->default(1);                       #수량

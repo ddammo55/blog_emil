@@ -55,4 +55,7 @@ Route::resource('/shipment','ShipmentsController')->middleware('auth');
 Route::post('product/con/{id}', 'ShipmentsController@con');
 Route::post('shipmentss', 'ShipmentsController@update');
 
-
+#|--------------------------------------------------------------------------
+#| PBA제조영상
+#|--------------------------------------------------------------------------
+Route::resource('/pbas','PbasController')->middleware('auth');

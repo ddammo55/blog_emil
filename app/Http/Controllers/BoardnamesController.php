@@ -47,6 +47,11 @@ class BoardnamesController extends Controller
             'boardname' => request('boardname'),
             'top_num' => request('top_num'),
             'bot_num' => request('bot_num'),
+            'man_hour' => request('man_hour'),
+            'top_method' => request('top_method'),
+            'bot_method' => request('bot_method'),
+            'metal_mask_no' => request('metal_mask_no'),
+            'dwg_no' => request('dwg_no'),
             'method' => $method,
             'note' => request('note'),
         ]);
@@ -91,6 +96,11 @@ class BoardnamesController extends Controller
             'boardname' => request('boardname'),
             'top_num' => request('top_num'),
             'bot_num' => request('bot_num'),
+            'man_hour' => request('man_hour'),
+            'top_method' => request('top_method'),
+            'bot_method' => request('bot_method'),
+            'metal_mask_no' => request('metal_mask_no'),
+            'dwg_no' => request('dwg_no'),
             'method' => $method,
             'note' => request('note'),
         ]);

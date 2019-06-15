@@ -22,6 +22,10 @@
 				</div>
 
 				<div class="field">
+					<input class="input {{ $errors->has('man_hour') ? 'is-danger' : '' }}" type="number" name="man_hour" value="{{$boardname->man_hour}}" placeholder="공수">
+				</div>
+
+				<div class="field">
 					<div class="ui selection dropdown">
 						<input class="input {{ $errors->has('method') ? 'is-danger' : '' }}" type="hidden" name="method" value="{{$boardname->method}}" placeholder="방법" required>
 						<i class="dropdown icon"></i>
@@ -38,9 +42,40 @@
 				</div>
 
 				<div class="field">
-					<input class="input {{ $errors->has('note') ? 'is-danger' : '' }}" type="text" name="note" value="{{$boardname->note}}" placeholder="메모">
-				</div>
+              <div class="ui selection dropdown">
+                <input class="input {{ $errors->has('top_method') ? 'is-danger' : '' }}" type="hidden" name="top_method" value="{{$boardname->top_method}}" placeholder="방법" required>
+                <i class="dropdown icon"></i>
+                <div class="default text" style="color: black">TOP소재</div>
+                <div class="menu">
+                  <div class="item">크림솔더</div>
+                  <div class="item">본드</div>
+                </div>
+              </div>
+            </div>
 
+            <div class="field">
+              <div class="ui selection dropdown">
+                <input class="input {{ $errors->has('bot_method') ? 'is-danger' : '' }}" type="hidden" name="bot_method" value="{{$boardname->bot_method}}" placeholder="방법" required>
+                <i class="dropdown icon"></i>
+                <div class="default text" style="color: black">BOT소재</div>
+                <div class="menu">
+                  <div class="item">본드</div>
+                  <div class="item">크림솔더</div>
+                </div>
+              </div>
+    		</div>
+
+            <div class="field">
+                <input class="input {{ $errors->has('metal_mask_no') ? 'is-danger' : '' }}" type="number" name="metal_mask_no" value="{{$boardname->metal_mask_no}}" placeholder="메탈마스크 넘버" required>
+            </div>
+
+            <div class="field">
+                <input class="input {{ $errors->has('dwg_no') ? 'is-danger' : '' }}" type="text" name="dwg_no" value="{{$boardname->dwg_no}}" placeholder="도면번호" required>
+            </div>
+
+            <div class="field">
+                <input class="input {{ $errors->has('note') ? 'is-danger' : '' }}" type="text" name="note" value="{{$boardname->note}}" placeholder="메모">
+            </div>
 
 			</form>
 

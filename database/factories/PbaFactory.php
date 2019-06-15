@@ -1,6 +1,6 @@
 <?php
 
-use App\Boardname;
+use App\Pba;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 
@@ -15,18 +15,12 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(Boardname::class, function (Faker $faker) {
+$factory->define(Pba::class, function (Faker $faker) {
     return [
-        'boardname' => str_random(6),
-        'top_num' => rand(10,99),
-        'bot_num' => rand(10,99),
-        'top_method' => "크림솔더",
-        'bot_method' => "본드",
-        'bot_method' => "본드",
-        'man_hour' => rand(10,1000),
-        'metal_mask_no' => rand(10,99),
-        'dwg_no' => "R1D000001",
-        'method' => str_random(3), 
-        'note' => str_random(10),   
+        'project_name' => str_random(6),  
+        'board_name' => str_random(6),  
+        'content' => str_random(30),  
+        'created_at' => now(),
+        'wr_user' => "홍길동",
     ];
 });

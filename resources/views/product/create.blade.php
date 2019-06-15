@@ -7,7 +7,7 @@
 <div class="ui segment">
   <div class="ui two column very relaxed grid">
     <div class="column">
-      <h1>NEW 시리얼번호 작성</h1>
+      <h1>자동 시리얼번호 작성 &nbsp;<i class="circular inverted small comment alternate outline icon" onclick="button_event()"></i></h1>
       <form class="ui form" method="POST" action="{{route('product_create')}}">
         @csrf
         <div class="field">
@@ -32,13 +32,13 @@
 
 
        <div class="field">
-        <button class="ui button" type="submit">시리얼번호 작성</button>
+        <button class="ui teal button" type="submit">시리얼번호 작성</button>
       </div>
     </form>  
 
     <div class="ui divider"></div>
 
-    <h1>시리얼번호 작성</h1>
+    <h1>수동 시리얼번호 작성 &nbsp;<i class="circular inverted small comment alternate outline icon" onclick="button_event2()"></i></h1>
     <form class="ui form" method="POST" action="/product">
       @csrf
       <div class="field">
@@ -179,5 +179,77 @@
 </font></font></div>
 </div>
 
+
+<!-- 자동 시리얼번호 작성 설명 모달 -->
+<div id="modal1" class="ui long test modal scrolling transition hidden">
+    <div class="header">
+      자동 시리얼번호 작성 도움말
+    </div>
+    <div class="image content">
+
+      <div class="description">
+        <div class="ui header">설명서</div>
+        <pre>
+          시리얼번호는 해당 년, 월 기준으로 자동 작성 된다.
+          2019년 01월은 '19A' 뒤에 4자리 숫자는 자동 카운터 되며 해당 월이 바뀌면 초기화 '0000' 된다.
+          중복은 허용되지 않는다.
+        </pre>
+        <img src="../images/help/f1.JPG">
+        <hr>
+        <img src="../images/help/f2.JPG">
+      </div>
+    </div>
+    <div class="actions">
+      <div class="ui primary approve button">
+        닫기
+        <i class="x icon icon"></i>
+      </div>
+    </div>
+  </div>
+
+
+<script type="text/javascript">
+ function button_event(){
+$('#modal1')
+  .modal('show')
+;
+}
+</script>
+<!-- 설명 모달 -->
+
+
+<!-- 수동 시리얼번호 작성 설명 모달 -->
+<div id="modal2" class="ui long test modal scrolling transition hidden">
+    <div class="header">
+      수동 시리얼번호 작성 도움말
+    </div>
+    <div class="image content">
+
+      <div class="description">
+        <div class="ui header">설명서</div>
+        <pre>
+          수동 시리얼번호 작성은 "필요한 시리얼번호를 생성 할 경우" 선택한다.
+          중복은 허용되지 않는다.
+        </pre>
+        <img src="../images/help/f3.JPG">
+      </div>
+    </div>
+    <div class="actions">
+      <div class="ui primary approve button">
+        닫기
+        <i class="x icon icon"></i>
+      </div>
+    </div>
+  </div>
+
+
+<script type="text/javascript">
+ function button_event2(){
+$('#modal2')
+  .modal('show')
+;
+}
+</script>
+<!-- 설명 모달 -->
 
 @endsection
