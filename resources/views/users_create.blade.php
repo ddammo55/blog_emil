@@ -28,12 +28,12 @@
       </div>
 
       <div class="field {{ $errors->has('password') ? 'has-error' : '' }}">
-        <input type="password" name="password" class="form-control" placeholder="비밀번호 8자리 이상"/>
+        <input type="password" name="password" class="form-control" placeholder="비밀번호 6자리 이상"/>
         {!! $errors->first('password', '<span class="form-error">:message</span>') !!}
       </div>
 
       <div class="field {{ $errors->has('password') ? 'has-error' : '' }}">
-        <input type="password" name="password_confirmation" class="form-control" placeholder="비밀번호 확인 8자리 이상" />
+        <input type="password" name="password_confirmation" class="form-control" placeholder="비밀번호 확인 6자리 이상" />
         {!! $errors->first('password_confirmation', '<span class="form-error">:message</span>') !!}
       </div>
 

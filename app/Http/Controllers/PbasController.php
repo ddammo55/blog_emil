@@ -27,7 +27,8 @@ class PbasController extends Controller
      */
     public function create()
     {
-        //
+       
+        return view('pbas.create');
     }
 
     /**
@@ -38,7 +39,7 @@ class PbasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd(request()->all());
     }
 
     /**

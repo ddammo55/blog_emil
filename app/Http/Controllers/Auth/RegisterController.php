@@ -46,18 +46,29 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+    // protected function register(Request $request)
+    // {
+    //      $this->validate($request,[
+    //       'email'=> 'required|email',
+    //       'password'=> 'required|min:6',
+    //     ]);
+    // }
+
+
     protected function validator(array $data)
     {
 
         $messages = [
             'name.required' => '이름을 입력해 주세요.',
             'email.required' => '이메일을 입력해 주세요.',
-            'password.required' => '패스워드를 입력해 주세요.'
+            'password.required' => '패스워드를 입력해 주세요.',
+            'password.min' => '패스워드는 6자리이상 입력해 주세요.',
+
         ];
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
         ], $messages);
     }
 

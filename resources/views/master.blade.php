@@ -13,6 +13,18 @@
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   crossorigin="anonymous"></script>
   <script src="/semantic/semantic.js"></script>
+
+<!-- 에디터 -->
+<!-- <script src="https://cdn.ckeditor.com/ckeditor5/12.2.0/decoupled-document/ckeditor.js"></script> -->
+<!-- <script src="https://cdn.ckeditor.com/ckeditor5/12.2.0/classic/ckeditor.js"></script> -->
+<script src="../ckeditor5-build-classic/ckeditor.js"></script>
+ <!-- 에디터 -->
+
+ <!-- Include stylesheet -->
+<!-- <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+
+<script src="../quill-1.3.6/quill.js"></script> -->
+  
 </head>
 <style media="screen">
 
