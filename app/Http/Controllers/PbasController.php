@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Pba;
 use Illuminate\Http\Request;
+use App\Http\Requests\PbaRequest;
 
 class PbasController extends Controller
 {
@@ -25,7 +26,7 @@ class PbasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(PbaRequest $request)
     {
        
         return view('pbas.create');
