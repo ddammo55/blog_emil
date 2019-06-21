@@ -26,7 +26,7 @@ class PbasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(PbaRequest $request)
+    public function create()
     {
        
         return view('pbas.create');
@@ -38,9 +38,16 @@ class PbasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PbaRequest $request)
     {
-        dd(request()->all());
+        //dd(request()->all());
+        Pba::create([
+            'board_name' => request('board_name'),
+            'content' => request('content'),
+        ]);
+        // request(['boardname', 'top_num', 'bot_num',  $method , 'note']));
+       flash('입력이 정상적으로 처리되었습니다.');
+       return back();
     }
 
     /**

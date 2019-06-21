@@ -17,7 +17,7 @@
 <!-- 에디터 -->
 <!-- <script src="https://cdn.ckeditor.com/ckeditor5/12.2.0/decoupled-document/ckeditor.js"></script> -->
 <!-- <script src="https://cdn.ckeditor.com/ckeditor5/12.2.0/classic/ckeditor.js"></script> -->
-<script src="../ckeditor5-build-classic/ckeditor.js"></script>
+<!-- <script src="../ckeditor5-build-classic/ckeditor.js"></script> -->
  <!-- 에디터 -->
 
  <!-- Include stylesheet -->

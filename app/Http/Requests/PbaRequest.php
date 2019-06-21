@@ -24,16 +24,17 @@ class PbaRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
-            'files' => ['array'],
-            'files.*' => ['mimes:jpg,png,zip,tar', 'max:30000'],
+            // 'title' => 'required',
+            // 'files' => ['array'],
+            // 'files.*' => ['mimes:jpg,png,zip,tar', 'max:30000'],
         ];
     }
 
     public function messages()
     {
         return [
-            'title.required' => '필수 입력 항목입니다.',
+            // 'title.required' => '필수 입력 항목입니다.',
+            // ' files.type' => '확장자',
         ];
     }
 }

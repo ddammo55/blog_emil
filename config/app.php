@@ -175,6 +175,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
+        //ck에디터
+        Unisharp\Ckeditor\ServiceProvider::class, 
 
     ],
 

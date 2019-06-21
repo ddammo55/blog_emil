@@ -2,14 +2,21 @@
 
 @section('content')
 
-<h1>글 작성</h1>
+<h1>PBA 제조영상 작성</h1>
 <form class="ui form" method="POST" action="/pbas" enctype="multipart/form-data">
 	@csrf
 	<div class="field">
 		<input class="input {{ $errors->has('title') ? 'is-danger' : '' }}" type="text" name="title" value="{{ old('title') }}" placeholder="제목">
 	</div>
 
-	<div class="field">
+	<textarea class="form-control" name="content" id="summary-ckeditor"></textarea>
+
+	<script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
+<script>
+    CKEDITOR.replace( 'summary-ckeditor' );
+</script>
+
+<!-- 	<div class="field">
     		<textarea  id="editor" class="input {{ $errors->has('title') ? 'is-danger' : '' }}" name="content" value="{{ old('description') }}" placeholder="내용"></textarea>	
 	</div>
 
@@ -19,7 +26,7 @@
             .catch( error => {
                 console.error( error );
             } );
-    </script>
+    </script> -->
 
     {{-- 파일 --}}
     <div class="field">
