@@ -176,7 +176,14 @@ return [
         App\Providers\RouteServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
         //ck에디터
-        Unisharp\Ckeditor\ServiceProvider::class, 
+        //Unisharp\Ckeditor\ServiceProvider::class, 
+
+        // tinymce 에디터
+        // UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
+        // Intervention\Image\ImageServiceProvider::class,
+        Unisharp\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
+
 
     ],
 
@@ -228,7 +235,11 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        //플래시메시지
         'Flash' => Laracasts\Flash\Flash::class,
+        // tinymce 에디터
+        //'Image' => Intervention\Image\Facades\Image::class,
+         'Image' => Intervention\Image\Facades\Image::class,
 
     ],
 

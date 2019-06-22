@@ -20,6 +20,14 @@
 <!-- <script src="../ckeditor5-build-classic/ckeditor.js"></script> -->
  <!-- 에디터 -->
 
+<!--  ck에디터4 -->
+<!-- <script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script> -->
+
+<!--  teny에디터4 -->
+<script src="{{ asset('../tinymce/js/tinymce/tinymce.min.js') }}"></script>
+
+
+
  <!-- Include stylesheet -->
 <!-- <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 
@@ -27,6 +35,8 @@
   
 </head>
 <style media="screen">
+
+
 
 /* unvisited link */
 a:link {
