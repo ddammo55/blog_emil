@@ -20,7 +20,7 @@ class CreatePbasTable extends Migration
 
             $table->string('board_name')->nullable();  #보드명
 
-            $table->string('content')->nullable();  #에디터
+            $table->longText('content')->nullable();  #에디터
 
             $table->string('wr_user')->nullable();  #작성한 유저
 

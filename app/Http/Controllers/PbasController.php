@@ -28,8 +28,12 @@ class PbasController extends Controller
      */
     public function create()
     {
-       
-        return view('pbas.create');
+        #|--------------------------------------------------------------------------
+        #| 보드명
+        #|--------------------------------------------------------------------------
+        $pcb_lists = \App\Boardname::get();
+
+        return view('pbas.create',compact('pcb_lists'));
     }
 
     /**
@@ -47,7 +51,7 @@ class PbasController extends Controller
         ]);
         // request(['boardname', 'top_num', 'bot_num',  $method , 'note']));
        flash('입력이 정상적으로 처리되었습니다.');
-       return back();
+       return redirect('/pbas');
     }
 
     /**

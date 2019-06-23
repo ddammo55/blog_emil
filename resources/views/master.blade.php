@@ -24,7 +24,7 @@
 <!-- <script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script> -->
 
 <!--  teny에디터4 -->
-<script src="{{ asset('../tinymce/js/tinymce/tinymce.min.js') }}"></script>
+<script src="{{ asset('../tinymce_4.3.8/js/tinymce/tinymce.min.js') }}"></script>
 
 
 

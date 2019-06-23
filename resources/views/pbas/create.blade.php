@@ -5,21 +5,25 @@
 <h1>PBA 제조영상 작성</h1>
 <form class="ui form" method="POST" action="/pbas" enctype="multipart/form-data">
 	@csrf
+  <div class="field">
+    <div class="ui selection dropdown">
+      <input type="hidden" name="board_name">
+      <i class="dropdown icon"></i>
+      <div class="default text" style="color: black">보드명</div>
+      <div class="menu">
+        @foreach ($pcb_lists as $pcb_list)
+        <div class="item">{{$pcb_list->boardname }}</div>
+        @endforeach
+      </div>
+    </div>
+  </div>
+
 	<div class="field">
 		<input class="input {{ $errors->has('title') ? 'is-danger' : '' }}" type="text" name="title" value="{{ old('title') }}" placeholder="제목">
 	</div>
 
-<!-- 	<textarea class="form-control" name="content" id="summary-ckeditor"></textarea>
 
-	
-<script>
-    CKEDITOR.replace( 'summary-ckeditor' );
-</script> -->
-
-
-
-
-	<textarea name="content" id="input" class="my-editor">Hello, World!</textarea>
+	<textarea name="content" class="my-editor">여기에 작성해 주세요.</textarea>
 
 
 <script>
